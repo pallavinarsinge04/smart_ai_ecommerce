@@ -9,4 +9,4 @@ build/
 
 .vscode/
 
-*.log
+*.lognode_modules/
