@@ -8,43 +8,53 @@ function Cart() {
     decreaseQuantity,
     removeFromCart,
     totalPrice,
+    totalQuantity,
   } = useCart();
 
   return (
-    <div style={{ padding: "30px" }}>
+    <div
+      style={{
+        maxWidth: "900px",
+        margin: "30px auto",
+        padding: "20px",
+      }}
+    >
       <h1>Shopping Cart</h1>
 
       {cart.length === 0 ? (
-        <h2>Cart is Empty</h2>
+        <h2>Your Cart is Empty</h2>
       ) : (
         <>
           {cart.map((item) => (
             <div
               key={item._id}
               style={{
-                border: "1px solid #ccc",
-                marginBottom: "20px",
+                border: "1px solid #ddd",
                 padding: "20px",
+                marginBottom: "20px",
                 borderRadius: "10px",
               }}
             >
               <img
                 src={item.image}
                 alt={item.name}
-                width="120"
+                width="150"
               />
 
               <h2>{item.name}</h2>
 
               <p>Price: ₹{item.price}</p>
 
-              <h3>Quantity: {item.quantity}</h3>
+              <p>Quantity: {item.quantity}</p>
 
               <button onClick={() => decreaseQuantity(item._id)}>
                 -
               </button>
 
-              <button onClick={() => increaseQuantity(item._id)}>
+              <button
+                style={{ margin: "0 10px" }}
+                onClick={() => increaseQuantity(item._id)}
+              >
                 +
               </button>
 
@@ -60,7 +70,11 @@ function Cart() {
 
           <hr />
 
-          <h2>Total: ₹{totalPrice}</h2>
+          <h2>Total Products: {cart.length}</h2>
+
+          <h2>Total Quantity: {totalQuantity}</h2>
+
+          <h1>Total Price: ₹{totalPrice}</h1>
         </>
       )}
     </div>

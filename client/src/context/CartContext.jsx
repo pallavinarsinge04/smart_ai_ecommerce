@@ -4,7 +4,7 @@ const CartContext = createContext();
 
 export const useCart = () => useContext(CartContext);
 
-export default function CartProvider({ children }) {
+function CartProvider({ children }) {
   const [cart, setCart] = useState([]);
 
   const addToCart = (product) => {
@@ -50,7 +50,12 @@ export default function CartProvider({ children }) {
   };
 
   const totalPrice = cart.reduce(
-    (sum, item) => sum + item.price * item.quantity,
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
+
+  const totalQuantity = cart.reduce(
+    (total, item) => total + item.quantity,
     0
   );
 
@@ -63,9 +68,12 @@ export default function CartProvider({ children }) {
         decreaseQuantity,
         removeFromCart,
         totalPrice,
+        totalQuantity,
       }}
     >
       {children}
     </CartContext.Provider>
   );
 }
+
+export default CartProvider;
