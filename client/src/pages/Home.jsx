@@ -1,30 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+
+import API from "../services/api";
 
 import Navbar from "../components/Navbar";
-import Hero from "../components/Hero";
-import ProductCard from "../components/ProductCard";
 import Footer from "../components/Footer";
+import ProductCard from "../components/ProductCard";
 
 function Home() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    API.get("/products")
+      .then((res) => setProducts(res.data))
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <>
       <Navbar />
 
-      <Hero />
-
       <div
         style={{
           display: "flex",
-          justifyContent: "center",
-          gap: "20px",
-          padding: "40px",
           flexWrap: "wrap",
+          gap: "20px",
+          padding: "30px",
         }}
       >
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
+        {products.map((item) => (
+          <ProductCard key={item._id} product={item} />
+        ))}
       </div>
 
       <Footer />
