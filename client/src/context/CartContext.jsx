@@ -1,4 +1,9 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+} from "react";
 
 const CartContext = createContext();
 
@@ -7,7 +12,6 @@ export const useCart = () => useContext(CartContext);
 function CartProvider({ children }) {
   const [cart, setCart] = useState(() => {
     const savedCart = localStorage.getItem("cart");
-
     return savedCart ? JSON.parse(savedCart) : [];
   });
 
@@ -27,7 +31,13 @@ function CartProvider({ children }) {
         )
       );
     } else {
-      setCart([...cart, { ...product, quantity: 1 }]);
+      setCart([
+        ...cart,
+        {
+          ...product,
+          quantity: 1,
+        },
+      ]);
     }
   };
 
@@ -35,7 +45,10 @@ function CartProvider({ children }) {
     setCart(
       cart.map((item) =>
         item._id === id
-          ? { ...item, quantity: item.quantity + 1 }
+          ? {
+              ...item,
+              quantity: item.quantity + 1,
+            }
           : item
       )
     );
@@ -46,7 +59,10 @@ function CartProvider({ children }) {
       cart
         .map((item) =>
           item._id === id
-            ? { ...item, quantity: item.quantity - 1 }
+            ? {
+                ...item,
+                quantity: item.quantity - 1,
+              }
             : item
         )
         .filter((item) => item.quantity > 0)
@@ -61,11 +77,13 @@ function CartProvider({ children }) {
     setCart([]);
   };
 
+  // Total Price
   const totalPrice = cart.reduce(
     (total, item) => total + item.price * item.quantity,
     0
   );
 
+  // Total Quantity
   const totalQuantity = cart.reduce(
     (total, item) => total + item.quantity,
     0
