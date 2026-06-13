@@ -1,11 +1,25 @@
+
 {
   "info": {
     "name": "Smart AI Ecommerce API",
     "_postman_id": "a1b2c3d4e5f6",
-    "description": "Auth APIs for Smart AI Ecommerce Backend",
+    "description": "Smart AI Ecommerce Backend APIs",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
+    {
+      "name": "Test Server Root",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:5000/",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": [""]
+        }
+      }
+    },
     {
       "name": "Auth - Register User",
       "request": {
@@ -53,15 +67,87 @@
       }
     },
     {
-      "name": "Test Server Root",
+      "name": "Get All Products",
       "request": {
         "method": "GET",
         "url": {
-          "raw": "http://localhost:5000/",
+          "raw": "http://localhost:5000/api/products",
           "protocol": "http",
           "host": ["localhost"],
           "port": "5000",
-          "path": [""]
+          "path": ["api", "products"]
+        }
+      }
+    },
+    {
+      "name": "Create Product",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:5000/api/products",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "products"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"iPhone 16 Pro\",\n  \"price\": 129999,\n  \"category\": \"Mobiles\",\n  \"description\": \"Apple flagship smartphone\",\n  \"image\": \"https://example.com/iphone16.jpg\",\n  \"stock\": 50\n}"
+        }
+      }
+    },
+    {
+      "name": "Get Product By ID",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:5000/api/products/PRODUCT_ID",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "products", "PRODUCT_ID"]
+        }
+      }
+    },
+    {
+      "name": "Update Product",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:5000/api/products/PRODUCT_ID",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "products", "PRODUCT_ID"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"iPhone 16 Pro Max\",\n  \"price\": 139999,\n  \"stock\": 45\n}"
+        }
+      }
+    },
+    {
+      "name": "Delete Product",
+      "request": {
+        "method": "DELETE",
+        "url": {
+          "raw": "http://localhost:5000/api/products/PRODUCT_ID",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "products", "PRODUCT_ID"]
         }
       }
     }
