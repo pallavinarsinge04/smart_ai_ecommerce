@@ -1,81 +1,49 @@
-# =====================
 # Dependencies
-# =====================
 node_modules/
-**/node_modules/
 
-# =====================
-# Environment files
-# =====================
+# Environment variables
 .env
-.env.*
-!.env.example
+.env.local
+.env.development
+.env.production
 
-# =====================
-# Build outputs
-# =====================
-dist/
-build/
-out/
-.next/
-.nuxt/
-.output/
-.vite/
-
-# =====================
 # Logs
-# =====================
-logs/
+logs
 *.log
 npm-debug.log*
 yarn-debug.log*
 pnpm-debug.log*
 
-# =====================
-# Cache / system
-# =====================
-.cache/
-.parcel-cache/
-.vite/
-.eslintcache
-.stylelintcache
-
-# =====================
-# OS / Editor
-# =====================
-.vscode/
-.vscode-test/
-.DS_Store
-Thumbs.db
-
-# =====================
-# Coverage
-# =====================
-coverage/
-.nyc_output/
-
-# =====================
-# Firebase / serverless
-# =====================
-.firebase/
-.serverless/
-
-# =====================
-# Misc
-# =====================
-*.tgz
+# Runtime data
+pids
 *.pid
 *.seed
 *.pid.lock
 
-# =====================
-# TypeScript
-# =====================
-*.tsbuildinfo
+# Coverage reports
+coverage/
 
-# =====================
-# Yarn / PNPM
-# =====================
-.pnpm-store/
-.pnp.*
-.yarn/
+# Build output
+dist/
+build/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# MongoDB dump files (if any)
+*.dump
+
+# Temporary files
+tmp/
+temp/
+
+# Socket / runtime
+*.sock
+
+# Optional
+package-lock.json
