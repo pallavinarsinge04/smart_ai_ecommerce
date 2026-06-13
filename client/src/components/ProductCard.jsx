@@ -1,11 +1,14 @@
 import React from "react";
+import { useCart } from "../context/CartContext";
 
 function ProductCard({ product }) {
+  const { addToCart } = useCart();
+
   return (
     <div
       style={{
         width: "250px",
-        border: "1px solid #ddd",
+        border: "1px solid gray",
         padding: "20px",
         borderRadius: "10px",
       }}
@@ -20,9 +23,9 @@ function ProductCard({ product }) {
 
       <h3>₹{product.price}</h3>
 
-      <p>{product.description}</p>
-
-      <button>Add to Cart</button>
+      <button onClick={() => addToCart(product)}>
+        Add To Cart
+      </button>
     </div>
   );
 }
