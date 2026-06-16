@@ -6,24 +6,25 @@ function Cart() {
   const { cart, totalPrice, updateQuantity, removeFromCart } = useCart();
 
   return (
-    <div style={styles.container}>
-      <h1 style={styles.title}>Shopping Cart</h1>
+    <div style={styles.page}>
+      <h1 style={styles.heading}>Your Shopping Cart 🛒</h1>
 
       {cart.length === 0 ? (
-        <div style={styles.emptyBox}>
-          <h2>Your Cart is Empty 🛒</h2>
+        <div style={styles.emptyCard}>
+          <h2>Your cart is empty</h2>
+          <p>Add some products to continue shopping</p>
           <Link to="/product">
-            <button style={styles.shopBtn}>Start Shopping</button>
+            <button style={styles.shopBtn}>Shop Now</button>
           </Link>
         </div>
       ) : (
-        <div style={styles.wrapper}>
-          {/* LEFT SIDE - CART ITEMS */}
-          <div style={styles.itemsSection}>
+        <div style={styles.container}>
+          {/* LEFT: ITEMS */}
+          <div style={styles.itemsBox}>
             {cart.map((item) => (
               <div key={item.id} style={styles.card}>
                 <div>
-                  <h3>{item.name}</h3>
+                  <h3 style={styles.name}>{item.name}</h3>
                   <p style={styles.price}>₹{item.price}</p>
                   <p style={styles.subtotal}>
                     Subtotal: ₹{item.price * item.quantity}
@@ -32,6 +33,7 @@ function Cart() {
 
                 <div style={styles.actions}>
                   <button
+                    style={styles.qtyBtn}
                     onClick={() =>
                       updateQuantity(item.id, item.quantity - 1)
                     }
@@ -43,6 +45,7 @@ function Cart() {
                   <span style={styles.qty}>{item.quantity}</span>
 
                   <button
+                    style={styles.qtyBtn}
                     onClick={() =>
                       updateQuantity(item.id, item.quantity + 1)
                     }
@@ -51,8 +54,8 @@ function Cart() {
                   </button>
 
                   <button
-                    onClick={() => removeFromCart(item.id)}
                     style={styles.removeBtn}
+                    onClick={() => removeFromCart(item.id)}
                   >
                     Remove
                   </button>
@@ -61,7 +64,7 @@ function Cart() {
             ))}
           </div>
 
-          {/* RIGHT SIDE - SUMMARY */}
+          {/* RIGHT: SUMMARY */}
           <div style={styles.summary}>
             <h2>Order Summary</h2>
             <hr />
@@ -70,7 +73,7 @@ function Cart() {
             <h3>Total: ₹{totalPrice}</h3>
 
             <Link to="/checkout">
-              <button style={styles.checkoutBtn}>Proceed to Checkout</button>
+              <button style={styles.checkoutBtn}>Checkout</button>
             </Link>
           </div>
         </div>
@@ -80,35 +83,50 @@ function Cart() {
 }
 
 const styles = {
-  container: { padding: "20px", fontFamily: "Arial" },
-  title: { textAlign: "center" },
-
-  wrapper: {
-    display: "flex",
-    gap: "20px",
-    marginTop: "20px",
+  page: {
+    padding: "30px",
+    fontFamily: "Arial",
+    background: "#f4f6f9",
+    minHeight: "100vh",
   },
 
-  itemsSection: {
+  heading: {
+    textAlign: "center",
+    marginBottom: "20px",
+  },
+
+  container: {
+    display: "flex",
+    gap: "20px",
+    flexWrap: "wrap",
+  },
+
+  itemsBox: {
     flex: 2,
   },
 
   card: {
     display: "flex",
     justifyContent: "space-between",
-    border: "1px solid #ddd",
+    background: "white",
     padding: "15px",
-    marginBottom: "10px",
-    borderRadius: "10px",
+    marginBottom: "12px",
+    borderRadius: "12px",
+    boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
     alignItems: "center",
   },
 
+  name: {
+    margin: "0",
+  },
+
   price: {
+    color: "#444",
     fontWeight: "bold",
   },
 
   subtotal: {
-    fontSize: "14px",
+    fontSize: "13px",
     color: "gray",
   },
 
@@ -118,35 +136,55 @@ const styles = {
     gap: "10px",
   },
 
+  qtyBtn: {
+    padding: "6px 10px",
+    border: "none",
+    background: "#ddd",
+    borderRadius: "6px",
+    cursor: "pointer",
+  },
+
   qty: {
     padding: "5px 10px",
-    border: "1px solid gray",
+    border: "1px solid #ccc",
+    borderRadius: "6px",
   },
 
   removeBtn: {
-    background: "red",
+    background: "#ff4d4d",
     color: "white",
     border: "none",
-    padding: "5px 10px",
+    padding: "6px 10px",
+    borderRadius: "6px",
     cursor: "pointer",
   },
 
   summary: {
     flex: 1,
-    border: "1px solid #ddd",
-    padding: "15px",
-    borderRadius: "10px",
+    background: "white",
+    padding: "20px",
+    borderRadius: "12px",
+    boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
     height: "fit-content",
   },
 
   checkoutBtn: {
     width: "100%",
-    padding: "10px",
-    background: "green",
+    padding: "12px",
+    background: "#28a745",
     color: "white",
     border: "none",
+    borderRadius: "8px",
     marginTop: "10px",
     cursor: "pointer",
+  },
+
+  emptyCard: {
+    textAlign: "center",
+    background: "white",
+    padding: "40px",
+    borderRadius: "12px",
+    boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
   },
 
   shopBtn: {
@@ -154,12 +192,9 @@ const styles = {
     background: "#007bff",
     color: "white",
     border: "none",
+    borderRadius: "8px",
     marginTop: "10px",
-  },
-
-  emptyBox: {
-    textAlign: "center",
-    marginTop: "50px",
+    cursor: "pointer",
   },
 };
 
