@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import API from "./../services/api";
 
 function Login() {
+  const navigate = useNavigate();
+
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -23,6 +26,9 @@ function Login() {
       localStorage.setItem("token", res.data.token);
 
       alert("Login Successful");
+
+      // optional redirect
+      navigate("/");
     } catch (err) {
       alert("Login Failed");
     }
@@ -31,8 +37,8 @@ function Login() {
   return (
     <div style={styles.container}>
       <div style={styles.card}>
-        <h2 style={styles.title}>Welcome Back 👋</h2>
-        <p style={styles.subtitle}>Login to continue</p>
+        <h2>Welcome Back 👋</h2>
+        <p>Login to continue</p>
 
         <form onSubmit={handleSubmit} style={styles.form}>
           <input
@@ -57,6 +63,14 @@ function Login() {
             Login
           </button>
         </form>
+
+        {/* REGISTER LINK */}
+        <p style={styles.registerText}>
+          Don’t have an account?{" "}
+          <Link to="/register" style={styles.link}>
+            Register
+          </Link>
+        </p>
       </div>
     </div>
   );
@@ -81,39 +95,37 @@ const styles = {
     textAlign: "center",
   },
 
-  title: {
-    marginBottom: "5px",
-  },
-
-  subtitle: {
-    marginBottom: "20px",
-    color: "gray",
-    fontSize: "14px",
-  },
-
   form: {
     display: "flex",
     flexDirection: "column",
     gap: "15px",
+    marginTop: "15px",
   },
 
   input: {
     padding: "12px",
     borderRadius: "8px",
     border: "1px solid #ccc",
-    outline: "none",
-    fontSize: "14px",
   },
 
   button: {
     padding: "12px",
-    borderRadius: "8px",
-    border: "none",
     background: "#667eea",
     color: "white",
-    fontWeight: "bold",
+    border: "none",
+    borderRadius: "8px",
     cursor: "pointer",
-    transition: "0.3s",
+  },
+
+  registerText: {
+    marginTop: "15px",
+    fontSize: "14px",
+  },
+
+  link: {
+    color: "#667eea",
+    fontWeight: "bold",
+    textDecoration: "none",
   },
 };
 
