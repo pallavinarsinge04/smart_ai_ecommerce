@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useCart } from "../context/CartContext";
-import { placeOrder } from "../services/orderApi";
+import { useCart } from "../../context/CartContext";
+import { placeOrder } from "../../services/orderApi";
 
 function Checkout() {
   const { cart, totalPrice, clearCart } = useCart();
