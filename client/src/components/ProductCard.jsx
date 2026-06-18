@@ -1,15 +1,16 @@
 import React from "react";
-import { useWishlist } from "../context/WishlistContext";
+import { useCart } from "../context/CartContext";
 
 function ProductCard({ product }) {
-  const { addToWishlist } = useWishlist();
+  const { addToCart } = useCart();
 
   return (
-    <div>
-      <h2>{product.name}</h2>
+    <div className="card">
+      <h3>{product.name}</h3>
+      <p className="price">₹{product.price}</p>
 
-      <button onClick={() => addToWishlist(product)}>
-        Add to Wishlist
+      <button onClick={() => addToCart(product)}>
+        Add to Cart
       </button>
     </div>
   );

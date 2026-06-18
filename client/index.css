@@ -1,3 +1,115 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+:root {
+  --primary: #4f46e5;      /* Indigo (main brand) */
+  --secondary: #06b6d4;    /* Cyan */
+  --accent: #f59e0b;       /* Amber */
+  --danger: #ef4444;       /* Red */
+  --success: #22c55e;      /* Green */
+
+  --bg: #0f172a;           /* Dark background */
+  --card: #111827;         /* Card background */
+  --text: #e5e7eb;         /* Main text */
+  --muted: #94a3b8;        /* Secondary text */
+
+  --border: #1f2937;
+}
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* LINKS */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* BUTTONS */
+button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  background: #4338ca;
+  transform: scale(1.03);
+}
+
+/* CONTAINERS */
+.container {
+  width: 90%;
+  margin: auto;
+  padding: 20px;
+}
+
+/* CARD STYLE */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 15px;
+  border-radius: 12px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: var(--secondary);
+}
+
+/* INPUT */
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: #0b1220;
+  color: white;
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: #0b1220;
+  border-bottom: 1px solid var(--border);
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+/* BADGES */
+.badge {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  background: var(--secondary);
+  color: black;
+}
+
+/* PRICE */
+.price {
+  color: var(--accent);
+  font-weight: bold;
+}

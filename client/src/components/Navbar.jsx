@@ -3,33 +3,28 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
-    <nav
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        padding: "20px",
-        background: "#2563eb",
-        color: "white",
-      }}
-    >
-      <h2>Smart AI Shop</h2>
-
-      <div style={{ display: "flex", gap: "20px" }}>
-        <Link to="/" style={{ color: "white" }}>
-          Home
+    <nav className="navbar">
+      {/* LEFT LOGO */}
+      <div className="nav-left">
+        <Link to="/" className="logo">
+          🛒 SmartAI Shop
         </Link>
+      </div>
 
-        <Link to="/cart" style={{ color: "white" }}>
-          Cart
-        </Link>
+      {/* CENTER LINKS */}
+      <div className="nav-center">
+        <Link to="/">Home</Link>
+        <Link to="/product">Products</Link>
+        <Link to="/cart">Cart</Link>
+        <Link to="/wishlist">Wishlist</Link>
+        <Link to="/orders">Orders</Link>
+      </div>
 
-        <Link to="/login" style={{ color: "white" }}>
-          Login
-        </Link>
-
-        <Link to="/register" style={{ color: "white" }}>
-          Register
-        </Link>
+      {/* RIGHT LINKS */}
+      <div className="nav-right">
+        <Link to="/login">Login</Link>
+        <Link to="/register">Register</Link>
+        <Link to="/admin/dashboard">Admin</Link>
       </div>
     </nav>
   );
