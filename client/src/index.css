@@ -2,18 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
+/* =========================
+   GLOBAL THEME COLORS
+========================= */
+:root {
+  --primary: #0A2947;   /* Deep Navy */
+  --secondary: #8B5E3C; /* Brown Accent */
+  --bg: #F3E4C9;        /* Cream Background */
+  --card: #D3D4C0;      /* Soft Card */
+  --text: #0A2947;
+  --border: #8B5E3C;
+}
+
+/* =========================
+   BASE STYLES
+========================= */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #f5f5f5;
+  background: var(--bg);
+  color: var(--text);
 }
+
+/* =========================
+   NAVBAR
+========================= */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px 25px;
-  background: #0b1220;
-  border-bottom: 1px solid var(--border);
+  background: var(--primary);
+  border-bottom: 2px solid var(--secondary);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -23,7 +43,7 @@ body {
 .logo {
   font-size: 20px;
   font-weight: bold;
-  color: var(--secondary);
+  color: var(--bg);
 }
 
 /* CENTER LINKS */
@@ -33,8 +53,9 @@ body {
 }
 
 .nav-center a {
-  color: var(--text);
+  color: var(--bg);
   transition: 0.3s;
+  text-decoration: none;
 }
 
 .nav-center a:hover {
@@ -49,12 +70,58 @@ body {
 
 .nav-right a {
   padding: 6px 12px;
-  border: 1px solid var(--border);
+  border: 1px solid var(--secondary);
   border-radius: 6px;
   transition: 0.3s;
+  color: var(--bg);
+  text-decoration: none;
 }
 
 .nav-right a:hover {
+  background: var(--secondary);
+  color: var(--bg);
+}
+
+/* =========================
+   PRODUCT CARD
+========================= */
+.card {
+  background: var(--card);
+  border: 2px solid var(--border);
+  padding: 15px;
+  border-radius: 12px;
+  transition: 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* =========================
+   BUTTONS
+========================= */
+button {
+  background: var(--secondary);
+  color: var(--bg);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
   background: var(--primary);
-  color: white;
+  color: var(--bg);
+}
+
+/* =========================
+   INPUTS
+========================= */
+input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 2px solid var(--border);
+  width: 100%;
 }
