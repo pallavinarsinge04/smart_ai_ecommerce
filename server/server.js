@@ -1,19 +1,16 @@
 import dotenv from "dotenv";
 dotenv.config();
 
-import http from "http";
 import mongoose from "mongoose";
 import app from "./app.js";
 
 mongoose
   .connect(process.env.MONGO_URI)
-  .then(() => console.log("MongoDB Connected 🚀"))
-  .catch((err) => console.log("MongoDB Error:", err));
+  .then(() => console.log("MongoDB Connected"))
+  .catch((err) => console.log("Mongo Error:", err));
 
-const server = http.createServer(app);
+const PORT = 5000;
 
-const PORT = process.env.PORT || 5000;
-
-server.listen(PORT, () => {
-  console.log(`Server running on ${PORT}`);
+app.listen(PORT, () => {
+  console.log("Server running on 5000");
 });
