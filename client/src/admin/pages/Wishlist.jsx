@@ -1,48 +1,25 @@
 import React from "react";
-import { useWishlist } from "../../context/WishlistContext";
+import { useWishlist } from "../context/WishlistContext";
 
 function Wishlist() {
-  const {
-    wishlist,
-    removeFromWishlist,
-  } = useWishlist();
+  const { wishlist, removeFromWishlist } = useWishlist();
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Wishlist ❤️</h1>
+    <div className="page">
+      <div className="container">
+        <h2 className="title">Wishlist</h2>
 
-      {wishlist.length === 0 ? (
-        <h2>No products in wishlist</h2>
-      ) : (
-        wishlist.map((item) => (
-          <div
-            key={item._id}
-            style={{
-              border: "1px solid gray",
-              padding: "20px",
-              marginBottom: "20px",
-            }}
-          >
-            <img
-              src={item.image}
-              alt={item.name}
-              width="120"
-            />
+        {wishlist.map((item) => (
+          <div key={item._id} className="card-ui" style={{ marginBottom: 10 }}>
+            <h3>{item.name}</h3>
+            <p>₹{item.price}</p>
 
-            <h2>{item.name}</h2>
-
-            <h3>₹{item.price}</h3>
-
-            <button
-              onClick={() =>
-                removeFromWishlist(item._id)
-              }
-            >
+            <button className="btn" onClick={() => removeFromWishlist(item._id)}>
               Remove
             </button>
           </div>
-        ))
-      )}
+        ))}
+      </div>
     </div>
   );
 }

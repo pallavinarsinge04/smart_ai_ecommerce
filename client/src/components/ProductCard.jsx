@@ -5,11 +5,11 @@ function ProductCard({ product }) {
   const { addToCart } = useCart();
 
   return (
-    <div className="card">
+    <div className="card-ui">
       <h3>{product.name}</h3>
       <p>₹{product.price}</p>
 
-      <button onClick={() => addToCart(product)}>
+      <button className="btn" onClick={() => addToCart(product)}>
         Add to Cart
       </button>
     </div>
