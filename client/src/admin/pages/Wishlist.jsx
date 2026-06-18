@@ -1,27 +1,41 @@
-import React from "react";
-import { useWishlist } from "./../../context/WishlistContext";
+import React, { createContext, useContext, useState } from "react";
 
-function Wishlist() {
-  const { wishlist, removeFromWishlist } = useWishlist();
+const WishlistContext = createContext();
+
+export const WishlistProvider = ({ children }) => {
+  const [wishlist, setWishlist] = useState([]);
+
+  const addToWishlist = (product) => {
+    setWishlist((prev) => {
+      const exists = prev.find((item) => item._id === product._id);
+
+      if (exists) return prev;
+
+      return [
+        ...prev,
+        {
+          ...product,
+          container: "wishlist", // ✅ container flag
+        },
+      ];
+    });
+  };
+
+  const removeFromWishlist = (id) => {
+    setWishlist((prev) => prev.filter((item) => item._id !== id));
+  };
 
   return (
-    <div className="page">
-      <div className="container">
-        <h2 className="title">Wishlist</h2>
-
-        {wishlist.map((item) => (
-          <div key={item._id} className="card-ui" style={{ marginBottom: 10 }}>
-            <h3>{item.name}</h3>
-            <p>₹{item.price}</p>
-
-            <button className="btn" onClick={() => removeFromWishlist(item._id)}>
-              Remove
-            </button>
-          </div>
-        ))}
-      </div>
-    </div>
+    <WishlistContext.Provider
+      value={{
+        wishlist,
+        addToWishlist,
+        removeFromWishlist,
+      }}
+    >
+      {children}
+    </WishlistContext.Provider>
   );
-}
+};
 
-export default Wishlist;
+export const useWishlist = () => useContext(WishlistContext);

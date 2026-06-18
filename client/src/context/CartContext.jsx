@@ -5,11 +5,12 @@ const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
+  // ➕ ADD TO CART (with container check)
   const addToCart = (product) => {
     setCart((prev) => {
-      const exist = prev.find((item) => item._id === product._id);
+      const exists = prev.find((item) => item._id === product._id);
 
-      if (exist) {
+      if (exists) {
         return prev.map((item) =>
           item._id === product._id
             ? { ...item, quantity: item.quantity + 1 }
@@ -17,16 +18,37 @@ export const CartProvider = ({ children }) => {
         );
       }
 
-      return [...prev, { ...product, quantity: 1 }];
+      return [
+        ...prev,
+        {
+          ...product,
+          quantity: 1,
+          container: "cart", // ✅ CONTAINER FLAG
+        },
+      ];
     });
   };
 
+  // ➖ REMOVE
   const removeFromCart = (id) => {
     setCart((prev) => prev.filter((item) => item._id !== id));
   };
 
+  // ➖ DECREASE QTY
+  const decreaseQty = (id) => {
+    setCart((prev) =>
+      prev
+        .map((item) =>
+          item._id === id
+            ? { ...item, quantity: item.quantity - 1 }
+            : item
+        )
+        .filter((item) => item.quantity > 0)
+    );
+  };
+
   const totalPrice = cart.reduce(
-    (total, item) => total + item.price * item.quantity,
+    (sum, item) => sum + item.price * item.quantity,
     0
   );
 
@@ -36,6 +58,7 @@ export const CartProvider = ({ children }) => {
         cart,
         addToCart,
         removeFromCart,
+        decreaseQty,
         totalPrice,
       }}
     >

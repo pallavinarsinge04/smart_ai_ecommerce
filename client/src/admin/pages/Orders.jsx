@@ -1,11 +1,28 @@
-import AdminLayout from "../layouts/AdminLayout";
+import React, { createContext, useContext, useState } from "react";
 
-function Orders() {
+const OrderContext = createContext();
+
+export const OrderProvider = ({ children }) => {
+  const [orders, setOrders] = useState([]);
+
+  const placeOrder = (cartItems, total) => {
+    const newOrder = {
+      id: Date.now(),
+      items: cartItems,
+      total,
+      status: "Processing",
+      container: "orders", // ✅ container flag
+      date: new Date().toLocaleString(),
+    };
+
+    setOrders((prev) => [...prev, newOrder]);
+  };
+
   return (
-    <AdminLayout>
-      <h1>Orders Management</h1>
-    </AdminLayout>
+    <OrderContext.Provider value={{ orders, placeOrder }}>
+      {children}
+    </OrderContext.Provider>
   );
-}
+};
 
-export default Orders;
+export const useOrders = () => useContext(OrderContext);
