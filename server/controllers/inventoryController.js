@@ -1,43 +1,34 @@
 
-import Product from "../models/Product.js";
+import Inventory from "../models/Inventory.js";
 
-export const getInventory = async (req, res) => {
+export const getInventory=async(req,res)=>{
 
-  try {
+    const items=await Inventory.find().populate("product");
 
-    const products = await Product.find();
+    res.json(items);
 
-    res.json(products);
+}
 
-  } catch (error) {
+export const addStock=async(req,res)=>{
 
-    res.status(500).json({
-      message: error.message,
-    });
+    const item=await Inventory.findById(req.params.id);
 
-  }
+    item.stock+=req.body.quantity;
 
-};
+    await item.save();
 
-export const updateStock = async (req, res) => {
+    res.json(item);
 
-  try {
+}
 
-    const product =
-      await Product.findById(req.params.id);
+export const removeStock=async(req,res)=>{
 
-    product.stock = req.body.stock;
+    const item=await Inventory.findById(req.params.id);
 
-    await product.save();
+    item.stock-=req.body.quantity;
 
-    res.json(product);
+    await item.save();
 
-  } catch (error) {
+    res.json(item);
 
-    res.status(500).json({
-      message: error.message,
-    });
-
-  }
-
-};
+}

@@ -2,14 +2,21 @@
 import express from "express";
 
 import {
-  getInventory,
-  updateStock,
+
+getInventory,
+
+addStock,
+
+removeStock
+
 } from "../controllers/inventoryController.js";
 
-const router = express.Router();
+const router=express.Router();
 
-router.get("/", getInventory);
+router.get("/",getInventory);
 
-router.put("/:id", updateStock);
+router.put("/add/:id",addStock);
+
+router.put("/remove/:id",removeStock);
 
 export default router;

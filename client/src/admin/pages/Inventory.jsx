@@ -1,92 +1,97 @@
 
-import { useEffect, useState } from "react";
+import {useEffect,useState} from "react";
+
 import axios from "axios";
 
-function Inventory() {
+function Inventory(){
 
-  const [products, setProducts] = useState([]);
+const[data,setData]=useState([]);
 
-  useEffect(() => {
+useEffect(()=>{
 
-    axios
+axios
 
-      .get("http://localhost:5000/api/inventory")
+.get("http://localhost:5000/api/inventory")
 
-      .then((res) => setProducts(res.data));
+.then(res=>setData(res.data));
 
-  }, []);
+},[]);
 
-  return (
+return(
 
-    <div className="inventory-page">
+<div className="inventory-page">
 
-      <h1>Inventory Management</h1>
+<h1>
 
-      <table>
+Inventory Management
 
-        <thead>
+</h1>
 
-          <tr>
+<table>
 
-            <th>Name</th>
+<thead>
 
-            <th>Price</th>
+<tr>
 
-            <th>Stock</th>
+<th>Product</th>
 
-            <th>Status</th>
+<th>Stock</th>
 
-          </tr>
+<th>Status</th>
 
-        </thead>
+</tr>
 
-        <tbody>
+</thead>
 
-          {products.map((item) => (
+<tbody>
 
-            <tr key={item._id}>
+{
 
-              <td>{item.name}</td>
+data.map(item=>(
 
-              <td>₹{item.price}</td>
+<tr key={item._id}>
 
-              <td>{item.stock}</td>
+<td>
 
-              <td>
+{item.product?.name}
 
-                {item.stock === 0 ? (
+</td>
 
-                  <span className="out">
-                    Out of Stock
-                  </span>
+<td>
 
-                ) : item.stock < 10 ? (
+{item.stock}
 
-                  <span className="low">
-                    Low Stock
-                  </span>
+</td>
 
-                ) : (
+<td>
 
-                  <span className="good">
-                    Available
-                  </span>
+{
 
-                )}
+item.stock<=item.lowStockLimit?
 
-              </td>
+"⚠️ Low Stock"
 
-            </tr>
+:
 
-          ))}
+"✅ Available"
 
-        </tbody>
+}
 
-      </table>
+</td>
 
-    </div>
+</tr>
 
-  );
+))
+
+}
+
+</tbody>
+
+</table>
+
+</div>
+
+)
 
 }
 

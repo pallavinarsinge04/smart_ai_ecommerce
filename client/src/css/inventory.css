@@ -9,7 +9,7 @@ min-height:100vh;
 
 }
 
-table{
+.inventory-page table{
 
 width:100%;
 
@@ -23,7 +23,7 @@ overflow:hidden;
 
 }
 
-th{
+.inventory-page th{
 
 background:#0A2947;
 
@@ -33,7 +33,7 @@ padding:15px;
 
 }
 
-td{
+.inventory-page td{
 
 padding:15px;
 
@@ -41,42 +41,30 @@ border-bottom:1px solid #ddd;
 
 }
 
-.good{
+.inventory-page tr:hover{
 
-color:green;
-
-font-weight:bold;
+background:#f7f7f7;
 
 }
 
-.low{
+.inventory-card{
 
-color:orange;
+background:white;
 
-font-weight:bold;
+padding:20px;
+
+border-radius:12px;
+
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+
+margin-bottom:20px;
+
+transition:.3s;
 
 }
 
-.out{
+.inventory-card:hover{
 
-color:red;
-
-font-weight:bold;
-
-}
-
-.alert{
-
-background:#ffdddd;
-
-padding:10px;
-
-margin:10px 0;
-
-border-radius:6px;
-
-color:red;
-
-font-weight:bold;
+transform:translateY(-5px);
 
 }
