@@ -6,7 +6,9 @@ import {
 } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
-
+import Checkout from "./pages/Checkout";
+import PaymentSuccess from "./pages/PaymentSuccess";
+import OrderTracking from "./pages/OrderTracking";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -15,6 +17,7 @@ import Cart from "./pages/Cart";
 import Wishlist from "./pages/Wishlist";
 import Orders from "./pages/Orders";
 import Profile from "./pages/Profile";
+import AIAssistant from "./pages/AIAssistant";
 function Layout() {
   const location = useLocation();
 
@@ -44,8 +47,25 @@ function Layout() {
 
         <Route path="/orders" element={<Orders />} />
        
+       <Route path="/checkout" element={<Checkout />} />
 
 <Route path="/profile" element={<Profile />} />
+      <Route
+  path="/payment-success"
+  element={<PaymentSuccess />}
+/>
+
+<Route
+  path="/track-order"
+  element={<OrderTracking />}
+/>
+<Route
+
+path="/assistant"
+
+element={<AIAssistant />}
+
+/>
       </Routes>
     </>
   );
