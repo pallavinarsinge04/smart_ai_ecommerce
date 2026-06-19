@@ -1,4 +1,9 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 
@@ -10,20 +15,26 @@ import Cart from "./pages/Cart";
 import Wishlist from "./pages/Wishlist";
 import Orders from "./pages/Orders";
 
-function App() {
-  const isLoggedIn = localStorage.getItem("token");
+function Layout() {
+  const location = useLocation();
+
+  const hideNavbar =
+    location.pathname === "/" ||
+    location.pathname === "/login" ||
+    location.pathname === "/register";
 
   return (
-    <BrowserRouter>
-
-      {isLoggedIn && <Navbar />}
+    <>
+      {!hideNavbar && <Navbar />}
 
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Login />} />
 
         <Route path="/login" element={<Login />} />
 
         <Route path="/register" element={<Register />} />
+
+        <Route path="/home" element={<Home />} />
 
         <Route path="/product" element={<Product />} />
 
@@ -33,9 +44,14 @@ function App() {
 
         <Route path="/orders" element={<Orders />} />
       </Routes>
-
-    </BrowserRouter>
+    </>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Layout />
+    </BrowserRouter>
+  );
+}
