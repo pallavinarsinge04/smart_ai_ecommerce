@@ -1,27 +1,21 @@
 
-function PaymentSuccess() {
+function PaymentSuccess(){
 
-  return (
+return(
 
-    <div
-      style={{
-        textAlign: "center",
-        marginTop: "100px",
-      }}
-    >
+<div>
 
-      <h1>✅ Payment Successful</h1>
+<h1>
 
-      <h2>Your order has been placed.</h2>
+✅ Payment Successful
 
-      <a href="/orders">
-        View Orders
-      </a>
+</h1>
 
-    </div>
+</div>
 
-  );
+)
 
 }
 
 export default PaymentSuccess;
+

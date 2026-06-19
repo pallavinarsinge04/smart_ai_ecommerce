@@ -22,7 +22,8 @@ import Inventory from "./admin/pages/Inventory";
 import Analytics from "./admin/pages/Analytics";
 import SellerRegister from "./seller/pages/SellerRegister";
 import SellerDashboard from "./seller/pages/SellerDashboard";
-
+import PaymentSuccess from "./pages/PaymentSuccess"; 
+import PaymentFailed from "./pages/PaymentFailed";
 function Layout() {
   const location = useLocation();
 
@@ -91,7 +92,9 @@ element={<Inventory />}
   path="/seller/dashboard"
   element={<SellerDashboard />}
 />
+<Route path="/payment-success" element={<PaymentSuccess/>} /> <Route path="/payment-failed" element={<PaymentFailed/>} />
       </Routes>
+
     </>
   );
 }

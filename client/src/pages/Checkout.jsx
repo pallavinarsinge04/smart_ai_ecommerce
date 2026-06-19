@@ -1,22 +1,29 @@
+
 import RazorpayButton from "../components/RazorpayButton";
 
 function Checkout() {
 
-  const total = 25999;
+    return (
 
-  return (
+        <div>
 
-    <div>
+            <h1>
 
-      <h1>Checkout</h1>
+                Checkout
 
-      <h2>Total ₹{total}</h2>
+            </h1>
 
-      <RazorpayButton amount={total} />
+            <h2>
 
-    </div>
+                Total ₹2500
 
-  );
+            </h2>
+
+            <RazorpayButton amount={2500} />
+
+        </div>
+
+    );
 
 }
 

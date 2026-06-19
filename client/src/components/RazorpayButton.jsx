@@ -1,45 +1,50 @@
 
-import { createPayment } from "../services/paymentApi";
+import { createOrder } from "../services/paymentService";
 
 function RazorpayButton({ amount }) {
 
-  const payNow = async () => {
+    const payNow = async () => {
 
-    const { data } = await createPayment(amount);
+        const { data } = await createOrder(amount);
 
-    const options = {
+        const options = {
 
-      key: "YOUR_RAZORPAY_KEY",
+            key: import.meta.env.VITE_RAZORPAY_KEY,
 
-      amount: data.amount,
+            amount: data.amount,
 
-      currency: data.currency,
+            currency: data.currency,
 
-      name: "Smart AI Ecommerce",
+            name: "Smart AI Ecommerce",
 
-      order_id: data.id,
+            description: "Order Payment",
 
-      handler: function () {
+            order_id: data.id,
 
-        alert("Payment Successful");
+            handler: function () {
 
-        window.location.href = "/payment-success";
+                window.location = "/payment-success";
 
-      },
+            }
+
+        };
+
+        const payment = new window.Razorpay(options);
+
+        payment.open();
 
     };
 
-    const razor = new window.Razorpay(options);
+    return (
 
-    razor.open();
+        <button onClick={payNow}>
 
-  };
+            Pay Now
 
-  return (
-    <button onClick={payNow}>
-      Pay ₹{amount}
-    </button>
-  );
+        </button>
+
+    );
+
 }
 
 export default RazorpayButton;
