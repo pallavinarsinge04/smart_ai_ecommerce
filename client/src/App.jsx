@@ -8,12 +8,14 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Product from "./pages/Product";
 import Cart from "./pages/Cart";
-import Wishlist from "./admin/pages/Wishlist";
-import Orders from "./admin/pages/Orders";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 
-// Admin
+// USER PAGES (MOVE THESE LATER IF NEEDED)
+import Wishlist from "./pages/Wishlist";
+import Orders from "./pages/Orders";
+
+// ADMIN
 import Dashboard from "./admin/pages/Dashboard";
 
 function App() {
@@ -31,7 +33,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
-        {/* ADMIN ROUTE */}
+        {/* ADMIN */}
         <Route path="/admin/dashboard" element={<Dashboard />} />
       </Routes>
     </BrowserRouter>
