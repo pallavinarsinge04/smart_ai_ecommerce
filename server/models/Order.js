@@ -2,20 +2,15 @@ import mongoose from "mongoose";
 
 const orderSchema = new mongoose.Schema(
   {
-    customer: {
-      name: String,
-      email: String,
-      phone: String,
-      address: String,
+    user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+    products: Array,
+    totalPrice: Number,
+    status: {
+      type: String,
+      default: "Processing",
     },
-
-    items: Array,
-
-    total: Number,
   },
-  {
-    timestamps: true,
-  }
+  { timestamps: true }
 );
 
 export default mongoose.model("Order", orderSchema);

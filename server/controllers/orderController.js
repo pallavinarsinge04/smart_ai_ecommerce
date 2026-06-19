@@ -1,13 +1,20 @@
 import Order from "../models/Order.js";
 
+// CREATE ORDER
 export const createOrder = async (req, res) => {
-  try {
-    const order = await Order.create(req.body);
+  const { products, totalPrice } = req.body;
 
-    res.status(201).json(order);
-  } catch (err) {
-    res.status(500).json({
-      message: err.message,
-    });
-  }
+  const order = await Order.create({
+    user: req.user._id,
+    products,
+    totalPrice,
+  });
+
+  res.json(order);
+};
+
+// GET MY ORDERS
+export const getMyOrders = async (req, res) => {
+  const orders = await Order.find({ user: req.user._id });
+  res.json(orders);
 };
