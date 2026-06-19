@@ -1,41 +1,66 @@
-import "./Auth.css";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-function Login() {
+export default function Login() {
+  const navigate = useNavigate();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await axios.post(
+        "http://localhost:5000/api/auth/login",
+        {
+          email,
+          password,
+        }
+      );
+
+      // Save login token
+      localStorage.setItem("token", res.data.token);
+
+      // Save user data
+      localStorage.setItem(
+        "user",
+        JSON.stringify(res.data.user)
+      );
+
+      alert("Login Successful");
+
+      // Redirect to products page
+      navigate("/product");
+    } catch (err) {
+      alert(err.response?.data?.message || "Login Failed");
+    }
+  };
+
   return (
-    <div className="auth-container">
+    <div className="login-container">
+      <form onSubmit={handleLogin} className="login-card">
 
-      <div className="auth-card">
+        <h2>Login</h2>
 
-        <div className="auth-logo">
-          🛍️
-        </div>
+        <input
+          type="email"
+          placeholder="Email"
+          onChange={(e) => setEmail(e.target.value)}
+        />
 
-        <h1>Welcome Back</h1>
+        <input
+          type="password"
+          placeholder="Password"
+          onChange={(e) => setPassword(e.target.value)}
+        />
 
-        <p>Login to your SmartAI Shop account</p>
-
-        <input type="email" placeholder="Email Address" />
-
-        <input type="password" placeholder="Password" />
-
-        <button className="auth-btn">
+        <button type="submit">
           Login
         </button>
 
-        <div className="auth-footer">
-          Don't have an account?
-
-          <Link to="/register">
-            Register
-          </Link>
-
-        </div>
-
-      </div>
-
+      </form>
     </div>
   );
 }
-
-export default Login;
