@@ -1,53 +1,65 @@
 
 import { useState } from "react";
-import axios from "axios";
+import { addReview } from "../services/reviewService";
 
 function ReviewForm({ productId }) {
-  const [rating, setRating] = useState(5);
-  const [comment, setComment] = useState("");
+  const [form, setForm] = useState({
+    name: "",
+    rating: 5,
+    comment: "",
+  });
 
-  const submitReview = async () => {
-    await axios.post(
-      "http://localhost:5000/api/reviews",
-      {
-        productId,
-        userName: "Demo User",
-        rating,
-        comment,
-      }
-    );
+  const submit = async () => {
+    await addReview({
+      ...form,
+      product: productId,
+      user: "USER_ID_HERE",
+    });
 
     alert("Review Added");
   };
 
   return (
-    <div>
+    <div className="review-form">
 
-      <h2>Add Review</h2>
+      <input
+        placeholder="Your Name"
+        onChange={(e) =>
+          setForm({
+            ...form,
+            name: e.target.value,
+          })
+        }
+      />
 
       <select
         onChange={(e) =>
-          setRating(Number(e.target.value))
+          setForm({
+            ...form,
+            rating: Number(e.target.value),
+          })
         }
       >
-        <option value="5">★★★★★</option>
-        <option value="4">★★★★</option>
-        <option value="3">★★★</option>
-        <option value="2">★★</option>
-        <option value="1">★</option>
+        <option value="5">5 Stars</option>
+        <option value="4">4 Stars</option>
+        <option value="3">3 Stars</option>
+        <option value="2">2 Stars</option>
+        <option value="1">1 Star</option>
       </select>
 
       <textarea
         placeholder="Write your review"
         onChange={(e) =>
-          setComment(e.target.value)
+          setForm({
+            ...form,
+            comment: e.target.value,
+          })
         }
       />
 
-      <button onClick={submitReview}>
+      <button onClick={submit}>
         Submit Review
       </button>
-
     </div>
   );
 }

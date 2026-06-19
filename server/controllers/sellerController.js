@@ -1,24 +1,23 @@
 
-import Seller from "../models/Seller.js";
-import bcrypt from "bcryptjs";
+import Review from "../models/Review.js";
 
-export const registerSeller = async (req, res) => {
-
-  const hashed = await bcrypt.hash(req.body.password, 10);
-
-  const seller = await Seller.create({
-    ...req.body,
-    password: hashed,
-  });
-
-  res.status(201).json(seller);
-
+export const addReview = async (req, res) => {
+  try {
+    const review = await Review.create(req.body);
+    res.status(201).json(review);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };
 
-export const getSellers = async (req, res) => {
+export const getReviews = async (req, res) => {
+  try {
+    const reviews = await Review.find({
+      product: req.params.productId,
+    });
 
-  const sellers = await Seller.find();
-
-  res.json(sellers);
-
+    res.json(reviews);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };

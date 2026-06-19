@@ -1,16 +1,17 @@
 
+import RatingStars from "./RatingStars";
+
 function ReviewCard({ review }) {
   return (
     <div className="review-card">
+      <h4>{review.name}</h4>
 
-      <h3>{review.userName}</h3>
-
-      <h4>{"⭐".repeat(review.rating)}</h4>
+      <RatingStars rating={review.rating} />
 
       <p>{review.comment}</p>
-
     </div>
   );
 }
 
 export default ReviewCard;
+

@@ -1,6 +1,5 @@
 
 import express from "express";
-
 import {
   addReview,
   getReviews,
@@ -10,6 +9,6 @@ const router = express.Router();
 
 router.post("/", addReview);
 
-router.get("/:id", getReviews);
+router.get("/:productId", getReviews);
 
 export default router;

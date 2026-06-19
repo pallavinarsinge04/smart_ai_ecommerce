@@ -8,12 +8,13 @@ import paymentRoutes from "./routes/paymentRoutes.js";
 import aiRoutes from "./routes/aiRoutes.js";
 import analyticsRoutes from "./routes/analyticsRoutes.js";
 import sellerRoutes from "./routes/sellerRoutes.js";
+import reviewRoutes from "./routes/reviewRoutes.js";
 
+app.use("/api/reviews", reviewRoutes);
 app.use("/api/sellers", sellerRoutes);
 app.use("/api/analytics", analyticsRoutes);
 app.use("/api/ai", aiRoutes);
 app.use("/api/payment", paymentRoutes);
-app.use("/api/reviews", reviewRoutes);
 app.use("/api/recommendations", recommendationRoutes);
 const app = express();
 import couponRoutes from "./routes/couponRoutes.js";
