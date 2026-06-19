@@ -7,7 +7,9 @@ import reviewRoutes from "./routes/reviewRoutes.js";
 
 app.use("/api/reviews", reviewRoutes);
 const app = express();
+import couponRoutes from "./routes/couponRoutes.js";
 
+app.use("/api/coupons", couponRoutes);
 app.use(cors());
 app.use(express.json());
 
