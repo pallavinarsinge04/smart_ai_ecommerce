@@ -11,6 +11,11 @@ import { admin } from "../middleware/adminMiddleware.js";
 
 const router = express.Router();
 
+import { searchProducts } from "../controllers/productController.js";
+
+router.get("/search", searchProducts);
+
+
 router.get("/", getProducts);
 router.post("/", protect, admin, createProduct);
 router.put("/:id", protect, admin, updateProduct);

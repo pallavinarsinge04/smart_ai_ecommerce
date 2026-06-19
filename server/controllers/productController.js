@@ -1,29 +1,47 @@
+
 import Product from "../models/Product.js";
 
-// GET ALL
-export const getProducts = async (req, res) => {
-  const products = await Product.find();
-  res.json(products);
-};
+export const searchProducts = async (req, res) => {
 
-// CREATE
-export const createProduct = async (req, res) => {
-  const product = await Product.create(req.body);
-  res.status(201).json(product);
-};
+  try {
 
-// UPDATE
-export const updateProduct = async (req, res) => {
-  const product = await Product.findByIdAndUpdate(
-    req.params.id,
-    req.body,
-    { new: true }
-  );
-  res.json(product);
-};
+    const keyword = req.query.keyword || "";
 
-// DELETE
-export const deleteProduct = async (req, res) => {
-  await Product.findByIdAndDelete(req.params.id);
-  res.json({ message: "Deleted" });
+    const category = req.query.category || "";
+
+    const sort = req.query.sort || "";
+
+    let query = {};
+
+    if (keyword) {
+      query.name = {
+        $regex: keyword,
+        $options: "i",
+      };
+    }
+
+    if (category) {
+      query.category = category;
+    }
+
+    let products = await Product.find(query);
+
+    if (sort === "low") {
+      products.sort((a, b) => a.price - b.price);
+    }
+
+    if (sort === "high") {
+      products.sort((a, b) => b.price - a.price);
+    }
+
+    res.json(products);
+
+  } catch (error) {
+
+    res.status(500).json({
+      message: error.message,
+    });
+
+  }
+
 };
