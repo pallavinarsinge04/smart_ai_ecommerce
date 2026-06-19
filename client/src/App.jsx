@@ -18,6 +18,8 @@ import Wishlist from "./pages/Wishlist";
 import Orders from "./pages/Orders";
 import Profile from "./pages/Profile";
 import AIAssistant from "./pages/AIAssistant";
+import Inventory from "./admin/pages/Inventory";
+
 function Layout() {
   const location = useLocation();
 
@@ -64,6 +66,13 @@ function Layout() {
 path="/assistant"
 
 element={<AIAssistant />}
+
+/>
+<Route
+
+path="/admin/inventory"
+
+element={<Inventory />}
 
 />
       </Routes>

@@ -8,12 +8,14 @@ import notificationRoutes from "./routes/notificationRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
+import inventoryRoutes from "./routes/inventoryRoutes.js";
 
 const app = express();
 
 connectDB();
 
 app.use(cors());
+app.use("/api/inventory", inventoryRoutes);
 app.use(express.json());
 
 app.get("/", (req, res) => {
