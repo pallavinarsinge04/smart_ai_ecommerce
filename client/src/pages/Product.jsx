@@ -1,6 +1,7 @@
 import React from "react";
 import { useCart } from "../context/CartContext";
-
+import Recommendations from "../pages/Recommendations";
+<Recommendations productId={product._id} />
 const products = [
   {
     id: 1,

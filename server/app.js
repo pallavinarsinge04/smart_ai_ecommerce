@@ -1,11 +1,12 @@
 import express from "express";
 import cors from "cors";
-
+import recommendationRoutes from "./routes/recommendationRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
 import reviewRoutes from "./routes/reviewRoutes.js";
 
 app.use("/api/reviews", reviewRoutes);
+app.use("/api/recommendations", recommendationRoutes);
 const app = express();
 import couponRoutes from "./routes/couponRoutes.js";
 

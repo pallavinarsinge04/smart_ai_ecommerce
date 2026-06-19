@@ -5,6 +5,10 @@ import API from "../services/api";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import ProductCard from "../components/ProductCard";
+import TrendingProducts from "../components/TrendingProducts";
+
+import RecentlyViewed from "../components/RecentlyViewed";
+
 
 function Home() {
   const [products, setProducts] = useState([]);
