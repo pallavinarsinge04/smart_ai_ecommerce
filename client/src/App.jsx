@@ -14,7 +14,7 @@ import Product from "./pages/Product";
 import Cart from "./pages/Cart";
 import Wishlist from "./pages/Wishlist";
 import Orders from "./pages/Orders";
-
+import Profile from "./pages/Profile";
 function Layout() {
   const location = useLocation();
 
@@ -43,6 +43,9 @@ function Layout() {
         <Route path="/wishlist" element={<Wishlist />} />
 
         <Route path="/orders" element={<Orders />} />
+       
+
+<Route path="/profile" element={<Profile />} />
       </Routes>
     </>
   );

@@ -1,138 +1,90 @@
-import React from "react";
+
+import React, { useState } from "react";
+import "./Profile.css";
 
 function Profile() {
-  // sample user data (you can replace with API later)
-  const user = {
-    name: "John Doe",
-    email: "johndoe@gmail.com",
-    role: "Customer",
-    joined: "Jan 2026",
+  const [user, setUser] = useState({
+    name: "Pallavi Narsinge",
+    email: "pallavi@gmail.com",
+    phone: "9876543210",
+    address: "Latur, Maharashtra",
+  });
+
+  const handleChange = (e) => {
+    setUser({
+      ...user,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const saveProfile = () => {
+    alert("Profile Updated Successfully");
+  };
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    window.location.href = "/login";
   };
 
   return (
-    <div style={styles.page}>
-      <h1 style={styles.heading}>My Profile 👤</h1>
+    <div className="profile-page">
 
-      <div style={styles.card}>
-        {/* Avatar */}
-        <div style={styles.avatar}>
-          {user.name.charAt(0)}
-        </div>
+      <div className="profile-card">
 
-        {/* Info */}
-        <h2>{user.name}</h2>
-        <p style={styles.text}>{user.email}</p>
-        <p style={styles.text}>Role: {user.role}</p>
-        <p style={styles.text}>Joined: {user.joined}</p>
+        <img
+          src="https://i.pravatar.cc/200"
+          alt="profile"
+          className="profile-image"
+        />
 
-        {/* Stats */}
-        <div style={styles.stats}>
-          <div style={styles.box}>
-            <h3>12</h3>
-            <p>Orders</p>
-          </div>
+        <h2>My Profile</h2>
 
-          <div style={styles.box}>
-            <h3>5</h3>
-            <p>Wishlist</p>
-          </div>
+        <input
+          name="name"
+          value={user.name}
+          onChange={handleChange}
+          placeholder="Name"
+        />
 
-          <div style={styles.box}>
-            <h3>3</h3>
-            <p>Coupons</p>
-          </div>
-        </div>
+        <input
+          name="email"
+          value={user.email}
+          onChange={handleChange}
+          placeholder="Email"
+        />
 
-        {/* Buttons */}
-        <div style={styles.actions}>
-          <button style={styles.editBtn}>Edit Profile</button>
-          <button style={styles.logoutBtn}>Logout</button>
-        </div>
+        <input
+          name="phone"
+          value={user.phone}
+          onChange={handleChange}
+          placeholder="Phone"
+        />
+
+        <textarea
+          name="address"
+          value={user.address}
+          onChange={handleChange}
+          placeholder="Address"
+        />
+
+        <button
+          className="save-btn"
+          onClick={saveProfile}
+        >
+          Save Profile
+        </button>
+
+        <button
+          className="logout-btn"
+          onClick={logout}
+        >
+          Logout
+        </button>
+
       </div>
+
     </div>
   );
 }
-
-const styles = {
-  page: {
-    padding: "30px",
-    fontFamily: "Arial",
-    background: "#f4f6f9",
-    minHeight: "100vh",
-    textAlign: "center",
-  },
-
-  heading: {
-    marginBottom: "20px",
-  },
-
-  card: {
-    maxWidth: "400px",
-    margin: "auto",
-    background: "white",
-    padding: "25px",
-    borderRadius: "15px",
-    boxShadow: "0 4px 15px rgba(0,0,0,0.1)",
-  },
-
-  avatar: {
-    width: "70px",
-    height: "70px",
-    borderRadius: "50%",
-    background: "#007bff",
-    color: "white",
-    fontSize: "28px",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    margin: "auto",
-    marginBottom: "15px",
-  },
-
-  text: {
-    color: "gray",
-    margin: "5px 0",
-  },
-
-  stats: {
-    display: "flex",
-    justifyContent: "space-between",
-    marginTop: "20px",
-  },
-
-  box: {
-    background: "#f0f0f0",
-    padding: "10px",
-    borderRadius: "10px",
-    width: "30%",
-  },
-
-  actions: {
-    marginTop: "20px",
-    display: "flex",
-    justifyContent: "space-between",
-    gap: "10px",
-  },
-
-  editBtn: {
-    flex: 1,
-    padding: "10px",
-    border: "none",
-    background: "#28a745",
-    color: "white",
-    borderRadius: "8px",
-    cursor: "pointer",
-  },
-
-  logoutBtn: {
-    flex: 1,
-    padding: "10px",
-    border: "none",
-    background: "#dc3545",
-    color: "white",
-    borderRadius: "8px",
-    cursor: "pointer",
-  },
-};
 
 export default Profile;
