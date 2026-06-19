@@ -2,177 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-/* =========================
-   GLOBAL THEME COLORS
-========================= */
-:root {
-  --primary: #0A2947;   /* Deep Navy */
-  --secondary: #8B5E3C; /* Brown Accent */
-  --bg: #F3E4C9;        /* Cream Background */
-  --card: #D3D4C0;      /* Soft Card */
-  --text: #0A2947;
-  --border: #8B5E3C;
+:root{
+  --primary:#0A2947;
+  --secondary:#F3E4C9;
+  --bg:#D3D4C0;
+  --accent:#8B5E3C;
+  --white:#ffffff;
 }
 
-/* =========================
-   BASE STYLES
-========================= */
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: var(--bg);
-  color: var(--text);
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
-/* =========================
-   NAVBAR
-========================= */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 25px;
-  background: var(--primary);
-  border-bottom: 2px solid var(--secondary);
-  position: sticky;
-  top: 0;
-  z-index: 100;
+body{
+  font-family:Inter,sans-serif;
+  background:var(--bg);
+  color:var(--primary);
 }
 
-/* LOGO */
-.logo {
-  font-size: 20px;
-  font-weight: bold;
-  color: var(--bg);
+a{
+  text-decoration:none;
+  color:inherit;
 }
 
-/* CENTER LINKS */
-.nav-center {
-  display: flex;
-  gap: 20px;
-}
-
-.nav-center a {
-  color: var(--bg);
-  transition: 0.3s;
-  text-decoration: none;
-}
-
-.nav-center a:hover {
-  color: var(--secondary);
-}
-
-/* RIGHT SIDE */
-.nav-right {
-  display: flex;
-  gap: 15px;
-}
-
-.nav-right a {
-  padding: 6px 12px;
-  border: 1px solid var(--secondary);
-  border-radius: 6px;
-  transition: 0.3s;
-  color: var(--bg);
-  text-decoration: none;
-}
-
-.nav-right a:hover {
-  background: var(--secondary);
-  color: var(--bg);
-}
-
-/* =========================
-   PRODUCT CARD
-========================= */
-.card {
-  background: var(--card);
-  border: 2px solid var(--border);
-  padding: 15px;
-  border-radius: 12px;
-  transition: 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-}
-
-/* =========================
-   BUTTONS
-========================= */
-button {
-  background: var(--secondary);
-  color: var(--bg);
-  border: none;
-  padding: 10px 15px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-button:hover {
-  background: var(--primary);
-  color: var(--bg);
-}
-
-/* =========================
-   INPUTS
-========================= */
-input {
-  padding: 10px;
-  border-radius: 8px;
-  border: 2px solid var(--border);
-  width: 100%;
-}
-.page {
-  min-height: 100vh;
-  background: var(--bg);
-  padding: 20px;
-}
-
-.container {
-  max-width: 1100px;
-  margin: auto;
-}
-
-.card-ui {
-  background: var(--card);
-  border: 2px solid var(--border);
-  padding: 20px;
-  border-radius: 12px;
-}
-
-.title {
-  font-size: 28px;
-  font-weight: bold;
-  color: var(--primary);
-  margin-bottom: 20px;
-}
-
-.btn {
-  background: var(--secondary);
-  color: var(--bg);
-  padding: 10px 15px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-}
-
-.btn:hover {
-  background: var(--primary);
-}
-
-.input {
-  width: 100%;
-  padding: 10px;
-  border: 2px solid var(--border);
-  border-radius: 8px;
-  margin-bottom: 10px;
-}
-.admin-page {
-  min-height: 100vh;
-  background: var(--primary);
-  color: var(--bg);
-  padding: 20px;
+button{
+  cursor:pointer;
+  border:none;
 }

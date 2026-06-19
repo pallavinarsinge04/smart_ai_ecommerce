@@ -1,17 +1,34 @@
-import React from "react";
-import { useCart } from "../context/CartContext";
+import "./ProductCard.css";
 
-function ProductCard({ product }) {
-  const { addToCart } = useCart();
-
+function ProductCard({ product, addToCart }) {
   return (
-    <div className="card-ui">
-      <h3>{product.name}</h3>
-      <p>₹{product.price}</p>
+    <div className="product-card">
 
-      <button className="btn" onClick={() => addToCart(product)}>
-        Add to Cart
-      </button>
+      <img
+        src={product.image}
+        alt={product.name}
+        className="product-image"
+      />
+
+      <div className="product-body">
+
+        <h2 className="product-name">
+          {product.name}
+        </h2>
+
+        <h3 className="product-price">
+          ₹{product.price}
+        </h3>
+
+        <button
+          className="cart-btn"
+          onClick={() => addToCart(product)}
+        >
+          🛒 Add to Cart
+        </button>
+
+      </div>
+
     </div>
   );
 }

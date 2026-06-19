@@ -1,0 +1,53 @@
+.page-container{
+
+max-width:1200px;
+
+margin:40px auto;
+
+padding:35px;
+
+background:white;
+
+border-radius:20px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+.page-title{
+
+font-size:42px;
+
+margin-bottom:30px;
+
+color:#0A2947;
+
+text-align:center;
+
+}
+
+.item{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:20px;
+
+border-bottom:1px solid #eee;
+
+}
+
+.item button{
+
+background:#8B5E3C;
+
+color:white;
+
+padding:10px 20px;
+
+border-radius:8px;
+
+}
