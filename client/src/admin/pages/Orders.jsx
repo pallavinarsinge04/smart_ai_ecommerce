@@ -1,28 +1,11 @@
-import React, { createContext, useContext, useState } from "react";
+import React from "react";
 
-const OrderContext = createContext();
-
-export const OrderProvider = ({ children }) => {
-  const [orders, setOrders] = useState([]);
-
-  const placeOrder = (cartItems, total) => {
-    const newOrder = {
-      id: Date.now(),
-      items: cartItems,
-      total,
-      status: "Processing",
-      container: "orders", // ✅ container flag
-      date: new Date().toLocaleString(),
-    };
-
-    setOrders((prev) => [...prev, newOrder]);
-  };
-
+function Orders() {
   return (
-    <OrderContext.Provider value={{ orders, placeOrder }}>
-      {children}
-    </OrderContext.Provider>
+    <div>
+      <h1>Orders Page</h1>
+    </div>
   );
-};
+}
 
-export const useOrders = () => useContext(OrderContext);
+export default Orders;
