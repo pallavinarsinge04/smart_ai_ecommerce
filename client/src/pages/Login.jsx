@@ -1,13 +1,13 @@
-import { useNavigate } from "react-router-dom";
 
-const navigate = useNavigate();
+import React from "react";
 
-const handleLogin = async (e) => {
-  e.preventDefault();
+function Login() {
+  return (
+    <div>
+      <h1>Login Page</h1>
+    </div>
+  );
+}
 
-  // After successful API login
+export default Login;
 
-  localStorage.setItem("token", "userLoggedIn");
-
-  navigate("/home");
-};
