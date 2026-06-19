@@ -1,4 +1,4 @@
-import { useOrder } from "../context/OrderContext";
+import { useOrder } from "./../context/OrderContext";
 import "./Page.css";
 
 export default function Orders() {
