@@ -1,17 +1,23 @@
 
-import AIChatBot from "../components/AIChatBot";
+import AIChatWidget from "../components/AIChatWidget";
 
 function AIAssistant() {
 
-  return (
+    return (
 
-    <div>
+        <div>
 
-      <AIChatBot />
+            <h1>
 
-    </div>
+                AI Shopping Assistant
 
-  );
+            </h1>
+
+            <AIChatWidget />
+
+        </div>
+
+    );
 
 }
 

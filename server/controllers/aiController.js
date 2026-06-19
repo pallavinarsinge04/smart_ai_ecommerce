@@ -1,38 +1,51 @@
 
+import client from "../config/openai.js";
+
 export const chatAI = async (req, res) => {
 
-  const { message } = req.body;
+    try {
 
-  let reply = "";
+        const completion = await client.chat.completions.create({
 
-  if (message.toLowerCase().includes("phone")) {
+            model: "gpt-4o-mini",
 
-    reply =
-      "Recommended: iPhone 16, Samsung S25, Nothing Phone 3";
+            messages: [
 
-  } else if (
-    message.toLowerCase().includes("laptop")
-  ) {
+                {
 
-    reply =
-      "Recommended: MacBook Air, Dell XPS, Lenovo Legion";
+                    role: "system",
 
-  } else if (
-    message.toLowerCase().includes("under 50000")
-  ) {
+                    content:
+                        "You are an AI shopping assistant for an ecommerce website.",
 
-    reply =
-      "Best options under ₹50,000: Redmi Note, Realme GT, Moto Edge";
+                },
 
-  } else {
+                {
 
-    reply =
-      "Please tell me your budget or category for better recommendations.";
+                    role: "user",
 
-  }
+                    content: req.body.message,
 
-  res.json({
-    answer: reply,
-  });
+                },
+
+            ],
+
+        });
+
+        res.json({
+
+            reply: completion.choices[0].message.content,
+
+        });
+
+    } catch (err) {
+
+        res.status(500).json({
+
+            message: err.message,
+
+        });
+
+    }
 
 };

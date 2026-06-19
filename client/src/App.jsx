@@ -25,6 +25,7 @@ import SellerDashboard from "./seller/pages/SellerDashboard";
 import PaymentSuccess from "./pages/PaymentSuccess"; 
 import PaymentFailed from "./pages/PaymentFailed";
 import Support from "./pages/Support";
+import AIAssistant from "./pages/AIAssistant";
 function Layout() {
   const location = useLocation();
 
@@ -96,6 +97,7 @@ element={<Inventory />}
 <Route path="/payment-success" element={<PaymentSuccess/>} /> <Route path="/payment-failed" element={<PaymentFailed/>} />
       </Routes>
       <Route path="/support" element={<Support/>} />
+      <Route path="/ai-assistant" element={<AIAssistant/>} />
 
     </>
   );
