@@ -1,41 +1,45 @@
-import React, { createContext, useContext, useState } from "react";
+import { useWishlist } from "../context/WishlistContext";
+import "./Page.css";
 
-const WishlistContext = createContext();
-
-export const WishlistProvider = ({ children }) => {
-  const [wishlist, setWishlist] = useState([]);
-
-  const addToWishlist = (product) => {
-    setWishlist((prev) => {
-      const exists = prev.find((item) => item._id === product._id);
-
-      if (exists) return prev;
-
-      return [
-        ...prev,
-        {
-          ...product,
-          container: "wishlist", // ✅ container flag
-        },
-      ];
-    });
-  };
-
-  const removeFromWishlist = (id) => {
-    setWishlist((prev) => prev.filter((item) => item._id !== id));
-  };
+export default function Wishlist() {
+  const { wishlist, removeFromWishlist } = useWishlist();
 
   return (
-    <WishlistContext.Provider
-      value={{
-        wishlist,
-        addToWishlist,
-        removeFromWishlist,
-      }}
-    >
-      {children}
-    </WishlistContext.Provider>
-  );
-};
+    <div className="page-container">
 
-export const useWishlist = () => useContext(WishlistContext);
+      <h1 className="page-title">❤️ Wishlist</h1>
+
+      {wishlist.length === 0 ? (
+        <div className="empty-card">
+          <h2>No Products Added</h2>
+        </div>
+      ) : (
+        <div className="grid">
+
+          {wishlist.map((item) => (
+
+            <div className="item-card" key={item._id}>
+
+              <img src={item.image} alt={item.name} />
+
+              <h2>{item.name}</h2>
+
+              <p>₹{item.price}</p>
+
+              <button
+                className="delete-btn"
+                onClick={() => removeFromWishlist(item._id)}
+              >
+                Remove
+              </button>
+
+            </div>
+
+          ))}
+
+        </div>
+      )}
+
+    </div>
+  );
+}
