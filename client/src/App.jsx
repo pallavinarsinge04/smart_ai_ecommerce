@@ -20,6 +20,9 @@ import Profile from "./pages/Profile";
 import AIAssistant from "./pages/AIAssistant";
 import Inventory from "./admin/pages/Inventory";
 import Analytics from "./admin/pages/Analytics";
+import SellerRegister from "./seller/pages/SellerRegister";
+import SellerDashboard from "./seller/pages/SellerDashboard";
+
 function Layout() {
   const location = useLocation();
 
@@ -78,6 +81,15 @@ element={<Inventory />}
 <Route
   path="/admin/analytics"
   element={<Analytics />}
+/>
+<Route
+  path="/seller/register"
+  element={<SellerRegister />}
+/>
+
+<Route
+  path="/seller/dashboard"
+  element={<SellerDashboard />}
 />
       </Routes>
     </>

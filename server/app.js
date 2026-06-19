@@ -7,7 +7,9 @@ import reviewRoutes from "./routes/reviewRoutes.js";
 import paymentRoutes from "./routes/paymentRoutes.js";
 import aiRoutes from "./routes/aiRoutes.js";
 import analyticsRoutes from "./routes/analyticsRoutes.js";
+import sellerRoutes from "./routes/sellerRoutes.js";
 
+app.use("/api/sellers", sellerRoutes);
 app.use("/api/analytics", analyticsRoutes);
 app.use("/api/ai", aiRoutes);
 app.use("/api/payment", paymentRoutes);

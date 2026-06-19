@@ -1,0 +1,82 @@
+
+.seller-card{
+
+width:450px;
+
+margin:40px auto;
+
+padding:30px;
+
+background:#F3E4C9;
+
+border-radius:15px;
+
+box-shadow:0 8px 20px rgba(0,0,0,.2);
+
+}
+
+.seller-card input{
+
+width:100%;
+
+padding:12px;
+
+margin:10px 0;
+
+border-radius:8px;
+
+border:1px solid #D3D4C0;
+
+}
+
+.seller-card button{
+
+width:100%;
+
+padding:12px;
+
+background:#0A2947;
+
+color:white;
+
+border:none;
+
+border-radius:8px;
+
+cursor:pointer;
+
+}
+
+.seller-card button:hover{
+
+background:#8B5E3C;
+
+}
+
+.stats{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+gap:20px;
+
+margin-top:30px;
+
+}
+
+.card{
+
+background:white;
+
+padding:25px;
+
+border-radius:12px;
+
+text-align:center;
+
+font-weight:bold;
+
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+
+}
