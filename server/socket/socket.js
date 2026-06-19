@@ -1,14 +1,22 @@
 
-export default function initializeSocket(io) {
-  io.on("connection", (socket) => {
-    console.log("Connected:", socket.id);
+export default function(io){
 
-    socket.on("joinRoom", (userId) => {
-      socket.join(userId);
+    io.on("connection",(socket)=>{
+
+        console.log("User Connected");
+
+        socket.on("send_message",(data)=>{
+
+            io.emit("receive_message",data);
+
+        });
+
+        socket.on("disconnect",()=>{
+
+            console.log("User Disconnected");
+
+        });
+
     });
 
-    socket.on("disconnect", () => {
-      console.log("Disconnected");
-    });
-  });
 }
