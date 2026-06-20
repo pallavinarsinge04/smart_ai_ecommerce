@@ -24,7 +24,9 @@ import payoutRoutes from "./routes/payoutRoutes.js";
 import returnRoutes from "./routes/returnRoutes.js"; 
 import invoiceRoutes from "./routes/invoiceRoutes.js"; 
 import shipmentRoutes from "./routes/shipmentRoutes.js"; 
+import deliveryRoutes from "./routes/deliveryRoutes.js";
 
+app.use("/api/delivery",deliveryRoutes);
 app.use("/api/shipment",shipmentRoutes);
 app.use("/api/invoices",invoiceRoutes);
 app.use("/api/returns",returnRoutes);
