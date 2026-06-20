@@ -26,7 +26,9 @@ import invoiceRoutes from "./routes/invoiceRoutes.js";
 import shipmentRoutes from "./routes/shipmentRoutes.js"; 
 import deliveryRoutes from "./routes/deliveryRoutes.js";
 import reportRoutes from "./routes/reportRoutes.js"; 
+import recommendationRoutes from "./routes/recommendationRoutes.js"; 
 
+app.use("/api/recommendations",recommendationRoutes);
 app.use("/api/reports",reportRoutes);
 app.use("/api/delivery",deliveryRoutes);
 app.use("/api/shipment",shipmentRoutes);

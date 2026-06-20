@@ -1,27 +1,37 @@
 
-function RecommendationCard({ product }) {
+function RecommendationCard({
 
-  return (
+product
 
-    <div className="recommend-card">
+}){
 
-      <img
-        src={product.image}
-        alt={product.name}
-      />
+return(
 
-      <h3>{product.name}</h3>
+<div className="recommend-card">
 
-      <h4>₹{product.price}</h4>
+<img
 
-      <button>
-        View Product
-      </button>
+src={product.image}
 
-    </div>
+alt={product.name}
 
-  );
+/>
+
+<h3>{product.name}</h3>
+
+<h2>₹{product.price}</h2>
+
+<button>
+
+View Product
+
+</button>
+
+</div>
+
+);
 
 }
 
 export default RecommendationCard;
+

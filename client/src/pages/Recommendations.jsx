@@ -1,48 +1,57 @@
 
-import { useEffect, useState } from "react";
+import {
 
-import RecommendationCard from "../components/RecommendationCard";
+useEffect,
 
-import axios from "axios";
+useState
 
-function Recommendations({ productId }) {
+}
 
-  const [products, setProducts] = useState([]);
+from "react";
 
-  useEffect(() => {
+import {
 
-    axios
+getRecommendations
 
-      .get(
-        `http://localhost:5000/api/recommendations/${productId}`
-      )
+}
 
-      .then((res) => setProducts(res.data));
+from "../services/recommendationService";
 
-  }, [productId]);
+import RecommendationSection
 
-  return (
+from "../components/RecommendationSection";
 
-    <div>
+function Recommendations(){
 
-      <h2>Recommended For You</h2>
+const[products,setProducts]=useState([]);
 
-      <div className="grid">
+useEffect(()=>{
 
-        {products.map((item) => (
+getRecommendations()
 
-          <RecommendationCard
-            key={item._id}
-            product={item}
-          />
+.then(res=>setProducts(res.data));
 
-        ))}
+},[]);
 
-      </div>
+return(
 
-    </div>
+<div className="recommend-page">
 
-  );
+<h1>
+
+AI Recommendations
+
+</h1>
+
+<RecommendationSection
+
+products={products}
+
+/>
+
+</div>
+
+);
 
 }
 

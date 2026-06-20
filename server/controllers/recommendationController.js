@@ -1,21 +1,38 @@
 
-import {
-  getRecommendations,
-  getTrendingProducts,
-} from "../services/recommendationService.js";
+export const getRecommendations = async (req, res) => {
 
-export const recommendations = async (req, res) => {
+    const recommendations = [
 
-  const data = await getRecommendations(req.params.id);
+        {
+            id:1,
+            name:"MacBook Air M3",
+            price:114999,
+            image:"https://via.placeholder.com/250"
+        },
 
-  res.json(data);
+        {
+            id:2,
+            name:"iPhone 15 Pro",
+            price:129999,
+            image:"https://via.placeholder.com/250"
+        },
 
-};
+        {
+            id:3,
+            name:"Sony WH1000XM5",
+            price:27999,
+            image:"https://via.placeholder.com/250"
+        },
 
-export const trending = async (req, res) => {
+        {
+            id:4,
+            name:"Apple Watch Ultra",
+            price:89999,
+            image:"https://via.placeholder.com/250"
+        }
 
-  const data = await getTrendingProducts();
+    ];
 
-  res.json(data);
+    res.json(recommendations);
 
 };
