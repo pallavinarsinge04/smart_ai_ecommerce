@@ -1,68 +1,79 @@
 
 import { useEffect, useState } from "react";
+
 import axios from "axios";
 
-import AnalyticsCard from "../components/AnalyticsCard";
+import DashboardCard from "../components/DashboardCard";
+
+import SalesChart from "../components/SalesChart";
 
 function Analytics() {
 
-  const [data, setData] = useState({});
+    const [data, setData] = useState(null);
 
-  useEffect(() => {
+    useEffect(() => {
 
-    axios
+        axios
 
-      .get("http://localhost:5000/api/analytics")
+        .get("http://localhost:5000/api/analytics")
 
-      .then((res) => setData(res.data));
+        .then(res => setData(res.data));
 
-  }, []);
+    }, []);
 
-  return (
+    if (!data) return <h2>Loading...</h2>;
 
-    <div className="analytics-container">
+    return (
 
-      <h1>Sales Analytics</h1>
+        <div className="analytics">
 
-      <div className="analytics-grid">
+            <h1>Analytics Dashboard</h1>
 
-        <AnalyticsCard
+            <div className="cards">
 
-          title="Revenue"
+                <DashboardCard
 
-          value={`₹${data.revenue || 0}`}
+                    title="Revenue"
 
-        />
+                    value={"₹" + data.revenue}
 
-        <AnalyticsCard
+                />
 
-          title="Orders"
+                <DashboardCard
 
-          value={data.totalOrders || 0}
+                    title="Orders"
 
-        />
+                    value={data.orders}
 
-        <AnalyticsCard
+                />
 
-          title="Users"
+                <DashboardCard
 
-          value={data.totalUsers || 0}
+                    title="Users"
 
-        />
+                    value={data.users}
 
-        <AnalyticsCard
+                />
 
-          title="Products"
+                <DashboardCard
 
-          value={data.totalProducts || 0}
+                    title="Products"
 
-        />
+                    value={data.products}
 
-      </div>
+                />
 
-    </div>
+            </div>
 
-  );
+            <SalesChart
+
+                data={data.monthlySales}
+
+            />
+
+        </div>
+
+    );
 
 }
 

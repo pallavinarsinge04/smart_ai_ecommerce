@@ -28,6 +28,8 @@ import Support from "./pages/Support";
 import AIAssistant from "./pages/AIAssistant";
 import Inventory from "./admin/pages/Inventory";
 import Coupons from "./admin/pages/Coupons";
+import Notifications from "./pages/Notifications";
+import Analytics from "./admin/pages/Analytics";
 function Layout() {
   const location = useLocation();
 
@@ -59,11 +61,8 @@ function Layout() {
        
        <Route path="/checkout" element={<Checkout />} />
 
-<Route path="/profile" element={<Profile />} />
-      <Route
-  path="/payment-success"
-  element={<PaymentSuccess />}
-/>
+      <Route path="/profile" element={<Profile />} />
+      <Route path="/payment-success" element={<PaymentSuccess />}/>
 
 <Route
   path="/track-order"
@@ -103,7 +102,9 @@ element={<Inventory />}
 
       <Route path="/admin/inventory" element={<Inventory/>} />
 <Route path="/admin/coupons" element={<Coupons/>} />
-    </>
+  
+  <Route path="/notifications" element={<Notifications/>} />
+  <Route path="/admin/analytics" element={<Analytics/>} />  </>
   );
 }
 

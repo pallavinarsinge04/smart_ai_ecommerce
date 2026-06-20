@@ -1,27 +1,24 @@
 
-import { useNotification } from "../context/NotificationContext";
+import { FaBell } from "react-icons/fa";
 
-function NotificationBell() {
-  const { notifications } =
-    useNotification();
+function NotificationBell(){
 
-  return (
-    <div style={{ position: "relative" }}>
-      🔔
+return(
 
-      <span
-        style={{
-          background: "red",
-          color: "white",
-          borderRadius: "50%",
-          padding: "2px 8px",
-          marginLeft: "5px",
-        }}
-      >
-        {notifications.length}
-      </span>
-    </div>
-  );
+<div className="bell">
+
+<FaBell size={24}/>
+
+<span className="count">
+
+3
+
+</span>
+
+</div>
+
+);
+
 }
 
 export default NotificationBell;
