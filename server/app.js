@@ -28,7 +28,9 @@ import deliveryRoutes from "./routes/deliveryRoutes.js";
 import reportRoutes from "./routes/reportRoutes.js"; 
 import recommendationRoutes from "./routes/recommendationRoutes.js"; 
 import loyaltyRoutes from "./routes/loyaltyRoutes.js";
+import couponRoutes from "./routes/couponRoutes.js";
 
+app.use("/api/coupons", couponRoutes);
 app.use("/api/loyalty", loyaltyRoutes);
 app.use("/api/recommendations",recommendationRoutes);
 app.use("/api/reports",reportRoutes);

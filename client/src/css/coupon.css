@@ -68,4 +68,30 @@ button:hover{
 background:#0A2947;
 
 }
+.checkout {
+    padding: 30px;
+    background: #F3E4C9;
+    min-height: 100vh;
+}
+
+.checkout input {
+    padding: 12px;
+    width: 250px;
+    border-radius: 8px;
+    border: 1px solid #D3D4C0;
+}
+
+.checkout button {
+    margin-left: 10px;
+    padding: 12px 20px;
+    background: #0A2947;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.checkout button:hover {
+    background: #8B5E3C;
+}
 

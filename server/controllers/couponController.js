@@ -1,62 +1,82 @@
 
 import Coupon from "../models/Coupon.js";
+import GiftCard from "../models/GiftCard.js";
 
-export const createCoupon=async(req,res)=>{
-
-const coupon=await Coupon.create(req.body);
-
-res.status(201).json(coupon);
-
+// CREATE COUPON
+export const createCoupon = async (req, res) => {
+    const coupon = await Coupon.create(req.body);
+    res.status(201).json(coupon);
 };
 
-export const getCoupons=async(req,res)=>{
+// APPLY COUPON
+export const applyCoupon = async (req, res) => {
+    const { code, total } = req.body;
 
-const coupons=await Coupon.find();
+    const coupon = await Coupon.findOne({ code });
 
-res.json(coupons);
+    if (!coupon) {
+        return res.status(404).json({ message: "Invalid Coupon" });
+    }
 
+    if (new Date(coupon.expiryDate) < new Date()) {
+        return res.status(400).json({ message: "Coupon expired" });
+    }
+
+    if (coupon.usedCount >= coupon.usageLimit) {
+        return res.status(400).json({ message: "Coupon limit reached" });
+    }
+
+    let discount = 0;
+
+    if (coupon.discountType === "percentage") {
+        discount = (total * coupon.discountValue) / 100;
+    } else {
+        discount = coupon.discountValue;
+    }
+
+    coupon.usedCount += 1;
+    await coupon.save();
+
+    res.json({
+        total,
+        discount,
+        finalAmount: total - discount
+    });
 };
 
-export const applyCoupon=async(req,res)=>{
+// CREATE GIFT CARD
+export const createGiftCard = async (req, res) => {
+    const card = await GiftCard.create(req.body);
+    res.status(201).json(card);
+};
 
-const {code,total}=req.body;
+// REDEEM GIFT CARD
+export const redeemGiftCard = async (req, res) => {
+    const { code, amount } = req.body;
 
-const coupon=await Coupon.findOne({code});
+    const card = await GiftCard.findOne({ code });
 
-if(!coupon){
+    if (!card || card.isUsed) {
+        return res.status(400).json({ message: "Invalid Gift Card" });
+    }
 
-return res.status(404).json({
-message:"Invalid Coupon"
-});
+    if (card.expiryDate < new Date()) {
+        return res.status(400).json({ message: "Gift Card expired" });
+    }
 
-}
+    const remaining = card.balance - amount;
 
-if(new Date()>coupon.expiry){
+    if (remaining <= 0) {
+        card.balance = 0;
+        card.isUsed = true;
+    } else {
+        card.balance = remaining;
+    }
 
-return res.status(400).json({
-message:"Coupon Expired"
-});
+    await card.save();
 
-}
-
-let finalAmount=total;
-
-if(coupon.type==="percent"){
-
-finalAmount=total-(total*coupon.discount/100);
-
-}else{
-
-finalAmount=total-coupon.discount;
-
-}
-
-res.json({
-
-discount:coupon.discount,
-
-finalAmount
-
-});
-
+    res.json({
+        message: "Gift card applied",
+        remainingBalance: card.balance
+    });
 };

@@ -3,39 +3,29 @@ import mongoose from "mongoose";
 
 const couponSchema = new mongoose.Schema({
 
-code:{
-type:String,
-unique:true,
-required:true
-},
+    code:{
+        type:String,
+        unique:true
+    },
 
-discount:{
-type:Number,
-required:true
-},
+    discountType:{
+        type:String,
+        enum:["percentage","flat"]
+    },
 
-type:{
-type:String,
-enum:["percent","flat"],
-default:"percent"
-},
+    discountValue:Number,
 
-minimumAmount:{
-type:Number,
-default:0
-},
+    expiryDate:Date,
 
-expiry:{
-type:Date
-},
+    usageLimit:Number,
 
-active:{
-type:Boolean,
-default:true
-}
+    usedCount:{
+        type:Number,
+        default:0
+    }
 
 },{
-timestamps:true
+    timestamps:true
 });
 
 export default mongoose.model("Coupon",couponSchema);
