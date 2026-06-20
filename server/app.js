@@ -13,7 +13,14 @@ import paymentRoutes from "./routes/paymentRoutes.js";
 import aiRoutes from "./routes/aiRoutes.js";
 import inventoryRoutes from "./routes/inventoryRoutes.js"; 
 import couponRoutes from "./routes/couponRoutes.js";
+import notificationRoutes from "./routes/notificationRoutes.js"; 
 
+import analyticsRoutes from "./routes/analyticsRoutes.js";
+import sellerRoutes from "./routes/sellerRoutes.js"; 
+app.use("/api/sellers",sellerRoutes);
+app.use("/api/analytics", analyticsRoutes);
+
+app.use( "/api/notifications", notificationRoutes );
 app.use("/api/coupons",couponRoutes);
 
 app.use("/api/inventory",inventoryRoutes);

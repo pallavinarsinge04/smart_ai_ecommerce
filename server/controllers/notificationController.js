@@ -1,20 +1,40 @@
 
 import Notification from "../models/Notification.js";
 
-export const getNotifications = async (req, res) => {
-  const data = await Notification.find({
-    userId: req.params.userId,
-  }).sort({ createdAt: -1 });
+export const getNotifications=async(req,res)=>{
 
-  res.json(data);
+const data=await Notification.find();
+
+res.json(data);
+
 };
 
-export const createNotification = async (
-  req,
-  res
-) => {
-  const notification =
-    await Notification.create(req.body);
+export const addNotification=async(req,res)=>{
 
-  res.status(201).json(notification);
+const notification=await Notification.create(req.body);
+
+res.json(notification);
+
+};
+
+export const markRead=async(req,res)=>{
+
+await Notification.findByIdAndUpdate(
+
+req.params.id,
+
+{
+
+read:true
+
+}
+
+);
+
+res.json({
+
+message:"Updated"
+
+});
+
 };

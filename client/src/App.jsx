@@ -30,6 +30,7 @@ import Inventory from "./admin/pages/Inventory";
 import Coupons from "./admin/pages/Coupons";
 import Notifications from "./pages/Notifications";
 import Analytics from "./admin/pages/Analytics";
+import SellerDashboard from "./seller/pages/SellerDashboard";
 function Layout() {
   const location = useLocation();
 
@@ -104,7 +105,8 @@ element={<Inventory />}
 <Route path="/admin/coupons" element={<Coupons/>} />
   
   <Route path="/notifications" element={<Notifications/>} />
-  <Route path="/admin/analytics" element={<Analytics/>} />  </>
+  <Route path="/admin/analytics" element={<Analytics/>} />
+  <Route path="/seller/dashboard" element={<SellerDashboard/>} />  </>
   );
 }
 

@@ -1,35 +1,33 @@
 
-function SellerDashboard() {
+import SellerCard from "../components/SellerCard";
 
-  return (
+function SellerDashboard(){
 
-    <div className="dashboard">
+return(
 
-      <h1>Seller Dashboard</h1>
+<div className="seller-dashboard">
 
-      <div className="stats">
+<h1>
 
-        <div className="card">
-          Total Products
-        </div>
+Seller Dashboard
 
-        <div className="card">
-          Total Orders
-        </div>
+</h1>
 
-        <div className="card">
-          Earnings
-        </div>
+<div className="seller-grid">
 
-        <div className="card">
-          Pending Orders
-        </div>
+<SellerCard title="Products" value="25"/>
 
-      </div>
+<SellerCard title="Orders" value="140"/>
 
-    </div>
+<SellerCard title="Revenue" value="₹1,45,000"/>
 
-  );
+<SellerCard title="Rating" value="4.8⭐"/>
+
+</div>
+
+</div>
+
+);
 
 }
 

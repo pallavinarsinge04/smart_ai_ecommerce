@@ -1,63 +1,19 @@
 
-.seller-card{
-
-width:450px;
-
-margin:40px auto;
+.seller-dashboard{
 
 padding:30px;
 
 background:#F3E4C9;
 
-border-radius:15px;
-
-box-shadow:0 8px 20px rgba(0,0,0,.2);
+min-height:100vh;
 
 }
 
-.seller-card input{
-
-width:100%;
-
-padding:12px;
-
-margin:10px 0;
-
-border-radius:8px;
-
-border:1px solid #D3D4C0;
-
-}
-
-.seller-card button{
-
-width:100%;
-
-padding:12px;
-
-background:#0A2947;
-
-color:white;
-
-border:none;
-
-border-radius:8px;
-
-cursor:pointer;
-
-}
-
-.seller-card button:hover{
-
-background:#8B5E3C;
-
-}
-
-.stats{
+.seller-grid{
 
 display:grid;
 
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 
 gap:20px;
 
@@ -65,18 +21,41 @@ margin-top:30px;
 
 }
 
-.card{
+.seller-card{
 
 background:white;
 
 padding:25px;
 
-border-radius:12px;
-
-text-align:center;
-
-font-weight:bold;
+border-radius:15px;
 
 box-shadow:0 5px 15px rgba(0,0,0,.15);
 
+transition:.3s;
+
+text-align:center;
+
 }
+
+.seller-card:hover{
+
+transform:translateY(-8px);
+
+}
+
+.seller-card h3{
+
+color:#8B5E3C;
+
+margin-bottom:10px;
+
+}
+
+.seller-card h1{
+
+color:#0A2947;
+
+font-size:32px;
+
+}
+

@@ -2,14 +2,22 @@
 import express from "express";
 
 import {
-  registerSeller,
-  getSellers,
+
+registerSeller,
+
+getSellers,
+
+verifySeller
+
 } from "../controllers/sellerController.js";
 
-const router = express.Router();
+const router=express.Router();
 
-router.post("/register", registerSeller);
+router.post("/",registerSeller);
 
-router.get("/", getSellers);
+router.get("/",getSellers);
+
+router.put("/verify/:id",verifySeller);
 
 export default router;
+

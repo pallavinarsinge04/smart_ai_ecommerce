@@ -1,36 +1,38 @@
 
 import mongoose from "mongoose";
 
-const sellerSchema = new mongoose.Schema(
-  {
-    name: {
-      type: String,
-      required: true,
+const sellerSchema = new mongoose.Schema({
+
+    name:{
+        type:String,
+        required:true
     },
 
-    email: {
-      type: String,
-      unique: true,
-      required: true,
+    email:{
+        type:String,
+        unique:true
     },
 
-    password: {
-      type: String,
-      required: true,
+    password:{
+        type:String
     },
 
-    shopName: {
-      type: String,
-      required: true,
+    shopName:{
+        type:String
     },
 
-    phone: String,
+    verified:{
+        type:Boolean,
+        default:false
+    },
 
-    address: String,
-  },
-  {
-    timestamps: true,
-  }
-);
+    earnings:{
+        type:Number,
+        default:0
+    }
 
-export default mongoose.model("Seller", sellerSchema);
+},{
+    timestamps:true
+});
+
+export default mongoose.model("Seller",sellerSchema);

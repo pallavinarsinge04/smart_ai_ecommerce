@@ -2,14 +2,21 @@
 import express from "express";
 
 import {
-  getNotifications,
-  createNotification,
+
+getNotifications,
+
+addNotification,
+
+markRead
+
 } from "../controllers/notificationController.js";
 
-const router = express.Router();
+const router=express.Router();
 
-router.get("/:userId", getNotifications);
+router.get("/",getNotifications);
 
-router.post("/", createNotification);
+router.post("/",addNotification);
+
+router.put("/:id",markRead);
 
 export default router;
