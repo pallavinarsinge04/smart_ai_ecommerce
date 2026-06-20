@@ -1,51 +1,22 @@
+import { recommendProducts } from "../ai/recommendationEngine.js";
+import { calculatePrice } from "../ai/pricingEngine.js";
+import { detectFraud } from "../ai/fraudDetection.js";
+import { analyzeBusiness } from "../ai/analyticsAI.js";
 
-import client from "../config/openai.js";
+export const getRecommendations = (req, res) => {
+    const data = recommendProducts([], req.body.products);
+    res.json(data);
+};
 
-export const chatAI = async (req, res) => {
+export const getPrice = (req, res) => {
+    const { basePrice, demand } = req.body;
+    res.json({ price: calculatePrice(basePrice, demand) });
+};
 
-    try {
+export const checkFraud = (req, res) => {
+    res.json(detectFraud(req.body));
+};
 
-        const completion = await client.chat.completions.create({
-
-            model: "gpt-4o-mini",
-
-            messages: [
-
-                {
-
-                    role: "system",
-
-                    content:
-                        "You are an AI shopping assistant for an ecommerce website.",
-
-                },
-
-                {
-
-                    role: "user",
-
-                    content: req.body.message,
-
-                },
-
-            ],
-
-        });
-
-        res.json({
-
-            reply: completion.choices[0].message.content,
-
-        });
-
-    } catch (err) {
-
-        res.status(500).json({
-
-            message: err.message,
-
-        });
-
-    }
-
+export const getAnalyticsAI = (req, res) => {
+    res.json(analyzeBusiness(req.body.orders));
 };

@@ -1,10 +1,16 @@
-
 import express from "express";
-
-import { chatAI } from "../controllers/aiController.js";
+import {
+    getRecommendations,
+    getPrice,
+    checkFraud,
+    getAnalyticsAI
+} from "../controllers/aiController.js";
 
 const router = express.Router();
 
-router.post("/chat", chatAI);
+router.post("/recommend", getRecommendations);
+router.post("/price", getPrice);
+router.post("/fraud", checkFraud);
+router.post("/analytics", getAnalyticsAI);
 
 export default router;

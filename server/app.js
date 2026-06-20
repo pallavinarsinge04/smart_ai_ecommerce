@@ -34,7 +34,9 @@ import orderRoutes from "./routes/orderRoutes.js";
 import analyticsRoutes from "./routes/analyticsRoutes.js";
 import chatbotRoutes from "./routes/chatbotRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
+import aiRoutes from "./routes/aiRoutes.js";
 
+app.use("/api/ai", aiRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/chatbot", chatbotRoutes);
 app.use("/api/analytics", analyticsRoutes);
