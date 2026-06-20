@@ -1,66 +1,43 @@
+import { useState } from "react";
+import { sendMessage } from "../services/chatbotService";
 
-import { useContext,useEffect,useState } from "react";
+function ChatBox() {
+    const [messages, setMessages] = useState([]);
+    const [text, setText] = useState("");
 
-import { SocketContext } from "../context/SocketContext";
+    const send = async () => {
+        const userMsg = { sender: "user", text };
+        setMessages([...messages, userMsg]);
 
-import ChatMessage from "./ChatMessage";
+        const res = await sendMessage(text);
 
-import ChatInput from "./ChatInput";
+        const botMsg = { sender: "bot", text: res.data.reply };
 
-function ChatBox(){
+        setMessages(prev => [...prev, botMsg]);
 
-const socket=useContext(SocketContext);
+        setText("");
+    };
 
-const[messages,setMessages]=useState([]);
+    return (
+        <div className="chat-container">
+            <div className="chat-box">
+                {messages.map((m, i) => (
+                    <div key={i} className={m.sender}>
+                        {m.text}
+                    </div>
+                ))}
+            </div>
 
-const[text,setText]=useState("");
-
-useEffect(()=>{
-
-socket.on("receive_message",(data)=>{
-
-setMessages(prev=>[...prev,data]);
-
-});
-
-},[]);
-
-const send=()=>{
-
-socket.emit("send_message",text);
-
-setText("");
-
-};
-
-return(
-
-<div className="chat-box">
-
-<div className="chat-body">
-
-{messages.map((m,i)=>
-
-<ChatMessage key={i} message={m}/>
-
-)}
-
-</div>
-
-<ChatInput
-
-value={text}
-
-setValue={setText}
-
-send={send}
-
-/>
-
-</div>
-
-)
-
+            <div className="chat-input">
+                <input
+                    value={text}
+                    onChange={(e) => setText(e.target.value)}
+                    placeholder="Ask something..."
+                />
+                <button onClick={send}>Send</button>
+            </div>
+        </div>
+    );
 }
 
 export default ChatBox;

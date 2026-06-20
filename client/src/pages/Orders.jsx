@@ -1,42 +1,26 @@
-import { useOrder } from "./../context/OrderContext";
-import "./Page.css";
+import { useEffect, useState } from "react";
+import { getUserOrders } from "../services/orderService";
 
-export default function Orders() {
-  const { orders } = useOrder();
+function Orders() {
+    const [orders, setOrders] = useState([]);
 
-  return (
-    <div className="page-container">
+    useEffect(() => {
+        getUserOrders("USER_ID").then(res => setOrders(res.data));
+    }, []);
 
-      <h1 className="page-title">
-        📦 My Orders
-      </h1>
+    return (
+        <div className="orders-page">
+            <h1>My Orders</h1>
 
-      {orders.length === 0 ? (
-        <div className="empty-card">
-          <h2>No Orders Yet</h2>
+            {orders.map(order => (
+                <div key={order._id} className="order-card">
+                    <h3>Order ID: {order._id}</h3>
+                    <p>Status: {order.orderStatus}</p>
+                    <p>Total: ₹{order.totalAmount}</p>
+                </div>
+            ))}
         </div>
-      ) : (
-        <div className="grid">
-
-          {orders.map((order) => (
-            <div className="item-card" key={order._id}>
-
-              <h2>{order.name}</h2>
-
-              <p>₹{order.price}</p>
-
-              <p>Status :</p>
-
-              <span className="status">
-                Delivered
-              </span>
-
-            </div>
-          ))}
-
-        </div>
-      )}
-
-    </div>
-  );
+    );
 }
+
+export default Orders;

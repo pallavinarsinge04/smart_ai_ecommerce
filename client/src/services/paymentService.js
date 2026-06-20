@@ -1,10 +1,9 @@
-
 import axios from "axios";
 
-const API="http://localhost:5000/api/payouts";
+const API = "http://localhost:5000/api/payment";
 
-export const getPayouts=()=>axios.get(API);
+export const createOrder = (data) =>
+    axios.post(`${API}/create-order`, data);
 
-export const requestPayout=(data)=>axios.post(API,data);
-
-export const approvePayout=(id)=>axios.put(API+"/"+id);
+export const verifyPayment = (data) =>
+    axios.post(`${API}/verify`, data);

@@ -47,6 +47,12 @@ import Reports from "./admin/pages/Reports";
 import Recommendations from "./pages/Recommendations";
 import Notifications from "./pages/Notifications";
 import Loyalty from "./pages/Loyalty";
+import Payment from "./pages/Payment";
+import Orders from "./pages/Orders";
+import AdminOrders from "./admin/pages/AdminOrders";
+import Analytics from "./admin/pages/Analytics";
+import Chatbot from "./pages/Chatbot";
+import { AuthProvider } from "./context/AuthContext";
 
 function Layout() {
   const location = useLocation();
@@ -136,15 +142,27 @@ element={<Inventory />}
    <Route path="/recommendations" element={<Recommendations/>} />
   <Route path="/notifications" element={<Notifications/>} />
   <Route path="/loyalty" element={<Loyalty />} />
-  
+<Route path="/payment" element={<Payment />} />
+<Route path="/orders" element={<Orders />} />
+<Route path="/admin/orders" element={<AdminOrders />} />
+<Route path="/admin/analytics" element={<Analytics />} />
+<Route path="/chatbot" element={<Chatbot />} />
+<Route path="/profile" element={
+    <PrivateRoute>
+        <Profile />
+    </PrivateRoute>
+} />
+
    </>
   );
 }
 
 export default function App() {
   return (
+    <AuthProvider>
     <BrowserRouter>
-      <Layout />
+        <App />
     </BrowserRouter>
+</AuthProvider>
   );
 }

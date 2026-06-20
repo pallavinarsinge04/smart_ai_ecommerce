@@ -29,7 +29,17 @@ import reportRoutes from "./routes/reportRoutes.js";
 import recommendationRoutes from "./routes/recommendationRoutes.js"; 
 import loyaltyRoutes from "./routes/loyaltyRoutes.js";
 import couponRoutes from "./routes/couponRoutes.js";
+import paymentRoutes from "./routes/paymentRoutes.js";
+import orderRoutes from "./routes/orderRoutes.js";
+import analyticsRoutes from "./routes/analyticsRoutes.js";
+import chatbotRoutes from "./routes/chatbotRoutes.js";
+import authRoutes from "./routes/authRoutes.js";
 
+app.use("/api/auth", authRoutes);
+app.use("/api/chatbot", chatbotRoutes);
+app.use("/api/analytics", analyticsRoutes);
+app.use("/api/orders", orderRoutes);
+app.use("/api/payment", paymentRoutes);
 app.use("/api/coupons", couponRoutes);
 app.use("/api/loyalty", loyaltyRoutes);
 app.use("/api/recommendations",recommendationRoutes);

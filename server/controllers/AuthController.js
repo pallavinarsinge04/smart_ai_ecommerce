@@ -1,45 +1,39 @@
-import User from "../models/User.js";
 import bcrypt from "bcryptjs";
-import generateToken from "../utils/generateToken.js";
+import jwt from "jsonwebtoken";
+import User from "../models/User.js";
 
 // REGISTER
 export const register = async (req, res) => {
-  const { name, email, password } = req.body;
+    const { name, email, password } = req.body;
 
-  const exists = await User.findOne({ email });
-  if (exists) return res.status(400).json({ message: "User exists" });
+    const hashedPassword = await bcrypt.hash(password, 10);
 
-  const hashed = await bcrypt.hash(password, 10);
+    const user = await User.create({
+        name,
+        email,
+        password: hashedPassword
+    });
 
-  const user = await User.create({
-    name,
-    email,
-    password: hashed,
-  });
-
-  res.json({
-    id: user._id,
-    name: user.name,
-    token: generateToken(user._id, user.role),
-  });
+    res.json(user);
 };
 
 // LOGIN
 export const login = async (req, res) => {
-  const { email, password } = req.body;
+    const { email, password } = req.body;
 
-  const user = await User.findOne({ email });
+    const user = await User.findOne({ email });
 
-  if (!user) return res.status(400).json({ message: "User not found" });
+    if (!user) return res.status(400).json({ message: "User not found" });
 
-  const match = await bcrypt.compare(password, user.password);
+    const isMatch = await bcrypt.compare(password, user.password);
 
-  if (!match) return res.status(400).json({ message: "Wrong password" });
+    if (!isMatch) return res.status(400).json({ message: "Invalid credentials" });
 
-  res.json({
-    id: user._id,
-    name: user.name,
-    role: user.role,
-    token: generateToken(user._id, user.role),
-  });
+    const token = jwt.sign(
+        { id: user._id, role: user.role },
+        process.env.JWT_SECRET,
+        { expiresIn: "7d" }
+    );
+
+    res.json({ user, token });
 };
