@@ -19,6 +19,12 @@ import analyticsRoutes from "./routes/analyticsRoutes.js";
 import sellerRoutes from "./routes/sellerRoutes.js"; 
 import sellerProductRoutes from "./routes/sellerProductRoutes.js"; 
 import sellerOrderRoutes from "./routes/sellerOrderRoutes.js"; 
+
+import payoutRoutes from "./routes/payoutRoutes.js";
+
+app.use("/api/payouts",payoutRoutes);
+
+
 app.use("/api/seller-orders",sellerOrderRoutes);
 app.use("/api/seller-products",sellerProductRoutes);
 app.use("/api/sellers",sellerRoutes);

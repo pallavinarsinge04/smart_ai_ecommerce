@@ -1,10 +1,22 @@
 
 import express from "express";
 
-import { createOrder } from "../controllers/paymentController.js";
+import {
 
-const router = express.Router();
+createRequest,
 
-router.post("/create-order", createOrder);
+getRequests,
+
+approveRequest
+
+} from "../controllers/payoutController.js";
+
+const router=express.Router();
+
+router.post("/",createRequest);
+
+router.get("/",getRequests);
+
+router.put("/:id",approveRequest);
 
 export default router;

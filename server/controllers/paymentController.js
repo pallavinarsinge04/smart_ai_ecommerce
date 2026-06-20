@@ -1,38 +1,42 @@
 
-import Razorpay from "razorpay";
+import Payout from "../models/Payout.js";
 
-const razorpay = new Razorpay({
+export const createRequest=async(req,res)=>{
 
-    key_id: process.env.RAZORPAY_KEY_ID,
+const payout=await Payout.create(req.body);
 
-    key_secret: process.env.RAZORPAY_KEY_SECRET
+res.status(201).json(payout);
 
-});
+};
 
-export const createOrder = async (req, res) => {
+export const getRequests=async(req,res)=>{
 
-    try {
+const payouts=await Payout.find();
 
-        const options = {
+res.json(payouts);
 
-            amount: req.body.amount * 100,
+};
 
-            currency: "INR",
+export const approveRequest=async(req,res)=>{
 
-            receipt: "receipt_" + Date.now()
+const payout=await Payout.findByIdAndUpdate(
 
-        };
+req.params.id,
 
-        const order = await razorpay.orders.create(options);
+{
 
-        res.json(order);
+status:"Approved"
 
-    }
+},
 
-    catch (error) {
+{
 
-        res.status(500).json(error);
+new:true
 
-    }
+}
+
+);
+
+res.json(payout);
 
 };
