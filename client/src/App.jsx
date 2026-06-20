@@ -46,6 +46,7 @@ import AssignedOrders from "./delivery/pages/AssignedOrders";
 import Reports from "./admin/pages/Reports";
 import Recommendations from "./pages/Recommendations";
 import Notifications from "./pages/Notifications";
+import Loyalty from "./pages/Loyalty";
 
 function Layout() {
   const location = useLocation();
@@ -134,6 +135,7 @@ element={<Inventory />}
    <Route path="/admin/reports" element={<Reports/>} />
    <Route path="/recommendations" element={<Recommendations/>} />
   <Route path="/notifications" element={<Notifications/>} />
+  <Route path="/loyalty" element={<Loyalty />} />
   
    </>
   );

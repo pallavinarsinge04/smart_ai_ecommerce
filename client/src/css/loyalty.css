@@ -1,0 +1,28 @@
+.loyalty-page {
+    padding: 30px;
+    background: #F3E4C9;
+    min-height: 100vh;
+}
+
+.loyalty-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.loyalty-card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    text-align: center;
+}
+
+.loyalty-card h3 {
+    color: #8B5E3C;
+}
+
+.loyalty-card h1 {
+    color: #0A2947;
+}
