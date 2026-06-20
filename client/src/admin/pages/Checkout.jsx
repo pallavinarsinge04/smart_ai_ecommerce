@@ -28,6 +28,7 @@ function Checkout() {
         items: cart,
         total: totalPrice,
       });
+      const[coupon,setCoupon]=useState(""); const apply=async()=>{ const res=await applyCoupon(coupon,total); setTotal(res.data.finalAmount); };
 
       clearCart();
 
@@ -79,6 +80,7 @@ function Checkout() {
       <button onClick={handleOrder}>
         Place Order
       </button>
+      <input placeholder="Coupon Code" value={coupon} onChange={(e)=>setCoupon(e.target.value)} /> <button onClick={apply}> Apply Coupon </button>
     </div>
   );
 }

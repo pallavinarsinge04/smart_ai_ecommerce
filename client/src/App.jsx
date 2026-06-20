@@ -27,6 +27,7 @@ import PaymentFailed from "./pages/PaymentFailed";
 import Support from "./pages/Support";
 import AIAssistant from "./pages/AIAssistant";
 import Inventory from "./admin/pages/Inventory";
+import Coupons from "./admin/pages/Coupons";
 function Layout() {
   const location = useLocation();
 
@@ -101,7 +102,7 @@ element={<Inventory />}
       <Route path="/ai-assistant" element={<AIAssistant/>} />
 
       <Route path="/admin/inventory" element={<Inventory/>} />
-
+<Route path="/admin/coupons" element={<Coupons/>} />
     </>
   );
 }

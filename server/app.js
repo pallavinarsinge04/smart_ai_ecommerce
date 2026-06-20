@@ -12,6 +12,10 @@ import reviewRoutes from "./routes/reviewRoutes.js";
 import paymentRoutes from "./routes/paymentRoutes.js";
 import aiRoutes from "./routes/aiRoutes.js";
 import inventoryRoutes from "./routes/inventoryRoutes.js"; 
+import couponRoutes from "./routes/couponRoutes.js";
+
+app.use("/api/coupons",couponRoutes);
+
 app.use("/api/inventory",inventoryRoutes);
 app.use("/api/ai", aiRoutes);
 app.use("/api/payment", paymentRoutes);

@@ -1,0 +1,71 @@
+
+.coupon-page{
+
+padding:30px;
+
+background:#F3E4C9;
+
+min-height:100vh;
+
+}
+
+.coupon-page table{
+
+width:100%;
+
+background:white;
+
+border-collapse:collapse;
+
+border-radius:10px;
+
+overflow:hidden;
+
+}
+
+.coupon-page th{
+
+background:#0A2947;
+
+color:white;
+
+padding:15px;
+
+}
+
+.coupon-page td{
+
+padding:15px;
+
+border-bottom:1px solid #ddd;
+
+}
+
+.coupon-page tr:hover{
+
+background:#fafafa;
+
+}
+
+button{
+
+background:#8B5E3C;
+
+color:white;
+
+padding:10px 20px;
+
+border:none;
+
+border-radius:8px;
+
+cursor:pointer;
+
+}
+
+button:hover{
+
+background:#0A2947;
+
+}
+

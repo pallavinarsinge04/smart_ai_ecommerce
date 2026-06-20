@@ -1,18 +1,23 @@
-
+```javascript
 import express from "express";
 
 import {
-  createCoupon,
-  getCoupons,
-  applyCoupon,
+
+createCoupon,
+
+getCoupons,
+
+applyCoupon
+
 } from "../controllers/couponController.js";
 
-const router = express.Router();
+const router=express.Router();
 
-router.post("/", createCoupon);
+router.post("/",createCoupon);
 
-router.get("/", getCoupons);
+router.get("/",getCoupons);
 
-router.post("/apply", applyCoupon);
+router.post("/apply",applyCoupon);
 
 export default router;
+```
