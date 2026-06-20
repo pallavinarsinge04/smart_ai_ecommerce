@@ -1,0 +1,76 @@
+
+.invoice{
+
+max-width:900px;
+
+margin:40px auto;
+
+padding:30px;
+
+background:white;
+
+border-radius:15px;
+
+box-shadow:0 5px 20px rgba(0,0,0,.15);
+
+}
+
+.invoice h1{
+
+text-align:center;
+
+color:#0A2947;
+
+}
+
+.invoice table{
+
+width:100%;
+
+margin-top:20px;
+
+border-collapse:collapse;
+
+}
+
+.invoice th{
+
+background:#0A2947;
+
+color:white;
+
+padding:12px;
+
+}
+
+.invoice td{
+
+padding:12px;
+
+border-bottom:1px solid #ddd;
+
+}
+
+.invoice button{
+
+margin-top:25px;
+
+padding:12px 20px;
+
+background:#8B5E3C;
+
+color:white;
+
+border:none;
+
+border-radius:8px;
+
+cursor:pointer;
+
+}
+
+.invoice button:hover{
+
+background:#0A2947;
+
+}

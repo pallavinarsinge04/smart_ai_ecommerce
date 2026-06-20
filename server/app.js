@@ -22,7 +22,9 @@ import sellerOrderRoutes from "./routes/sellerOrderRoutes.js";
 
 import payoutRoutes from "./routes/payoutRoutes.js";
 import returnRoutes from "./routes/returnRoutes.js"; 
+import invoiceRoutes from "./routes/invoiceRoutes.js"; 
 
+app.use("/api/invoices",invoiceRoutes);
 app.use("/api/returns",returnRoutes);
 app.use("/api/payouts",payoutRoutes);
 
