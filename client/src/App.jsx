@@ -43,6 +43,7 @@ import SellerProducts from "./seller/pages/SellerProducts";
  import ManageShipment from "./admin/pages/ManageShipment";
 import DeliveryDashboard from "./delivery/pages/Dashboard"; 
 import AssignedOrders from "./delivery/pages/AssignedOrders";
+import Reports from "./admin/pages/Reports";
 
 function Layout() {
   const location = useLocation();
@@ -128,7 +129,7 @@ element={<Inventory />}
    <Route path="/invoice/:id" element={<Invoice/>} />
    <Route path="/track" element={<TrackOrder/>} /> <Route path="/admin/shipment" element={<ManageShipment/>} />
    <Route path="/delivery/dashboard" element={<DeliveryDashboard/>} /> <Route path="/delivery/orders" element={<AssignedOrders/>} />
-   
+   <Route path="/admin/reports" element={<Reports/>} />
    </>
   );
 }
