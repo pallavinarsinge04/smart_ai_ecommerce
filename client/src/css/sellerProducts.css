@@ -1,0 +1,64 @@
+
+.seller-products{
+
+padding:30px;
+
+background:#F3E4C9;
+
+min-height:100vh;
+
+}
+
+.seller-products table{
+
+width:100%;
+
+background:white;
+
+border-collapse:collapse;
+
+border-radius:12px;
+
+overflow:hidden;
+
+}
+
+.seller-products th{
+
+background:#0A2947;
+
+color:white;
+
+padding:15px;
+
+}
+
+.seller-products td{
+
+padding:15px;
+
+border-bottom:1px solid #ddd;
+
+}
+
+.seller-products button{
+
+background:#8B5E3C;
+
+color:white;
+
+border:none;
+
+padding:8px 15px;
+
+border-radius:8px;
+
+cursor:pointer;
+
+}
+
+.seller-products button:hover{
+
+background:#0A2947;
+
+}

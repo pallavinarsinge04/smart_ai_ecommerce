@@ -1,33 +1,29 @@
 
-import Seller from "../models/Seller.js";
+import Product from "../models/Product.js";
 
-export const registerSeller=async(req,res)=>{
+export const getProducts=async(req,res)=>{
 
-const seller=await Seller.create(req.body);
+const products=await Product.find();
 
-res.status(201).json(seller);
-
-};
-
-export const getSellers=async(req,res)=>{
-
-const sellers=await Seller.find();
-
-res.json(sellers);
+res.json(products);
 
 };
 
-export const verifySeller=async(req,res)=>{
+export const addProduct=async(req,res)=>{
 
-const seller=await Seller.findByIdAndUpdate(
+const product=await Product.create(req.body);
+
+res.status(201).json(product);
+
+};
+
+export const updateProduct=async(req,res)=>{
+
+const product=await Product.findByIdAndUpdate(
 
 req.params.id,
 
-{
-
-verified:true
-
-},
+req.body,
 
 {
 
@@ -37,6 +33,22 @@ new:true
 
 );
 
-res.json(seller);
+res.json(product);
+
+};
+
+export const deleteProduct=async(req,res)=>{
+
+await Product.findByIdAndDelete(
+
+req.params.id
+
+);
+
+res.json({
+
+message:"Product Deleted"
+
+});
 
 };

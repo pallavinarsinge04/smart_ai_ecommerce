@@ -3,21 +3,24 @@ import express from "express";
 
 import {
 
-registerSeller,
+getProducts,
 
-getSellers,
+addProduct,
 
-verifySeller
+updateProduct,
 
-} from "../controllers/sellerController.js";
+deleteProduct
+
+} from "../controllers/sellerProductController.js";
 
 const router=express.Router();
 
-router.post("/",registerSeller);
+router.get("/",getProducts);
 
-router.get("/",getSellers);
+router.post("/",addProduct);
 
-router.put("/verify/:id",verifySeller);
+router.put("/:id",updateProduct);
+
+router.delete("/:id",deleteProduct);
 
 export default router;
-
