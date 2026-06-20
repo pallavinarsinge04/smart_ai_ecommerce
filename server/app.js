@@ -21,7 +21,9 @@ import sellerProductRoutes from "./routes/sellerProductRoutes.js";
 import sellerOrderRoutes from "./routes/sellerOrderRoutes.js"; 
 
 import payoutRoutes from "./routes/payoutRoutes.js";
+import returnRoutes from "./routes/returnRoutes.js"; 
 
+app.use("/api/returns",returnRoutes);
 app.use("/api/payouts",payoutRoutes);
 
 

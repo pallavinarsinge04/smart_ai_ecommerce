@@ -1,0 +1,106 @@
+
+.return-container{
+
+padding:40px;
+
+background:#F3E4C9;
+
+min-height:100vh;
+
+}
+
+.return-container form{
+
+max-width:550px;
+
+margin:auto;
+
+background:white;
+
+padding:30px;
+
+border-radius:15px;
+
+box-shadow:0 5px 20px rgba(0,0,0,.15);
+
+}
+
+.return-container input{
+
+width:100%;
+
+padding:12px;
+
+margin:12px 0;
+
+border:1px solid #D3D4C0;
+
+border-radius:8px;
+
+}
+
+.return-container button{
+
+width:100%;
+
+padding:12px;
+
+background:#0A2947;
+
+color:white;
+
+border:none;
+
+border-radius:8px;
+
+cursor:pointer;
+
+}
+
+.return-container button:hover{
+
+background:#8B5E3C;
+
+}
+
+.returns-page{
+
+padding:30px;
+
+background:#F3E4C9;
+
+min-height:100vh;
+
+}
+
+.returns-page table{
+
+width:100%;
+
+background:white;
+
+border-collapse:collapse;
+
+border-radius:12px;
+
+overflow:hidden;
+
+}
+
+.returns-page th{
+
+background:#0A2947;
+
+color:white;
+
+padding:15px;
+
+}
+
+.returns-page td{
+
+padding:15px;
+
+border-bottom:1px solid #ddd;
+
+}

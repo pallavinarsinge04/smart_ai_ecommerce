@@ -36,6 +36,8 @@ import SellerProducts from "./seller/pages/SellerProducts";
  import SellerOrders from "./seller/pages/SellerOrders";
  import Earnings from "./seller/pages/Earnings"; 
  import Withdraw from "./seller/pages/Withdraw";
+ import RequestReturn from "./pages/RequestReturn"; 
+ import ManageReturns from "./admin/pages/ManageReturns";
 function Layout() {
   const location = useLocation();
 
@@ -115,7 +117,8 @@ element={<Inventory />}
   <Route path="/seller/products" element={<SellerProducts/>} />
    <Route path="/seller/add-product" element={<AddSellerProduct/>} />
    <Route path="/seller/orders" element={<SellerOrders/>} /> 
-   <Route path="/seller/earnings" element={<Earnings/>} /> <Route path="/seller/withdraw" element={<Withdraw/>} /></>
+   <Route path="/seller/earnings" element={<Earnings/>} /> <Route path="/seller/withdraw" element={<Withdraw/>} />
+   <Route path="/return" element={<RequestReturn/>} /> <Route path="/admin/returns" element={<ManageReturns/>} /></>
   );
 }
 
