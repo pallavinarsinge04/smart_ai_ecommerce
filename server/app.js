@@ -18,6 +18,8 @@ import notificationRoutes from "./routes/notificationRoutes.js";
 import analyticsRoutes from "./routes/analyticsRoutes.js";
 import sellerRoutes from "./routes/sellerRoutes.js"; 
 import sellerProductRoutes from "./routes/sellerProductRoutes.js"; 
+import sellerOrderRoutes from "./routes/sellerOrderRoutes.js"; 
+app.use("/api/seller-orders",sellerOrderRoutes);
 app.use("/api/seller-products",sellerProductRoutes);
 app.use("/api/sellers",sellerRoutes);
 app.use("/api/analytics", analyticsRoutes);
