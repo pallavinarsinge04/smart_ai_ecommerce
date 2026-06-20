@@ -1,0 +1,113 @@
+
+.track-page{
+
+padding:40px;
+
+background:#F3E4C9;
+
+min-height:100vh;
+
+text-align:center;
+
+}
+
+.track-page input{
+
+width:350px;
+
+padding:12px;
+
+border:1px solid #D3D4C0;
+
+border-radius:8px;
+
+}
+
+.track-page button{
+
+padding:12px 20px;
+
+margin-left:10px;
+
+background:#0A2947;
+
+color:white;
+
+border:none;
+
+border-radius:8px;
+
+cursor:pointer;
+
+}
+
+.track-page button:hover{
+
+background:#8B5E3C;
+
+}
+
+.tracking-card{
+
+margin:30px auto;
+
+max-width:600px;
+
+background:white;
+
+padding:25px;
+
+border-radius:15px;
+
+box-shadow:0 5px 20px rgba(0,0,0,.15);
+
+}
+
+.manage-shipment{
+
+padding:40px;
+
+background:#F3E4C9;
+
+min-height:100vh;
+
+}
+
+.manage-shipment input,
+
+.manage-shipment select{
+
+width:100%;
+
+padding:12px;
+
+margin:12px 0;
+
+border-radius:8px;
+
+border:1px solid #D3D4C0;
+
+}
+
+.manage-shipment button{
+
+padding:12px;
+
+background:#8B5E3C;
+
+color:white;
+
+border:none;
+
+border-radius:8px;
+
+cursor:pointer;
+
+}
+
+.manage-shipment button:hover{
+
+background:#0A2947;
+
+}
+

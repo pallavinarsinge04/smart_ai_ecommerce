@@ -39,6 +39,9 @@ import SellerProducts from "./seller/pages/SellerProducts";
  import RequestReturn from "./pages/RequestReturn"; 
  import ManageReturns from "./admin/pages/ManageReturns";
  import Invoice from "./pages/Invoice";
+ import TrackOrder from "./pages/TrackOrder"; 
+ import ManageShipment from "./admin/pages/ManageShipment";
+
 function Layout() {
   const location = useLocation();
 
@@ -120,7 +123,8 @@ element={<Inventory />}
    <Route path="/seller/orders" element={<SellerOrders/>} /> 
    <Route path="/seller/earnings" element={<Earnings/>} /> <Route path="/seller/withdraw" element={<Withdraw/>} />
    <Route path="/return" element={<RequestReturn/>} /> <Route path="/admin/returns" element={<ManageReturns/>} />
-   <Route path="/invoice/:id" element={<Invoice/>} /></>
+   <Route path="/invoice/:id" element={<Invoice/>} />
+   <Route path="/track" element={<TrackOrder/>} /> <Route path="/admin/shipment" element={<ManageShipment/>} /></>
   );
 }
 
