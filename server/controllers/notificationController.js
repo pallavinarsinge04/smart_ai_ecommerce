@@ -1,25 +1,27 @@
 
 import Notification from "../models/Notification.js";
 
-export const getNotifications=async(req,res)=>{
-
-const data=await Notification.find();
-
-res.json(data);
-
-};
-
-export const addNotification=async(req,res)=>{
+export const createNotification=async(req,res)=>{
 
 const notification=await Notification.create(req.body);
 
-res.json(notification);
+res.status(201).json(notification);
 
 };
 
-export const markRead=async(req,res)=>{
+export const getNotifications=async(req,res)=>{
 
-await Notification.findByIdAndUpdate(
+const notifications=await Notification.find()
+
+.sort({createdAt:-1});
+
+res.json(notifications);
+
+};
+
+export const markAsRead=async(req,res)=>{
+
+const notification=await Notification.findByIdAndUpdate(
 
 req.params.id,
 
@@ -27,14 +29,16 @@ req.params.id,
 
 read:true
 
+},
+
+{
+
+new:true
+
 }
 
 );
 
-res.json({
-
-message:"Updated"
-
-});
+res.json(notification);
 
 };

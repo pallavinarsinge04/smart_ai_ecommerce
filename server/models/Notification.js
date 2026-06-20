@@ -1,31 +1,34 @@
-
+```javascript
 import mongoose from "mongoose";
 
-const notificationSchema=new mongoose.Schema({
+const notificationSchema = new mongoose.Schema({
 
-title:String,
+    user:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"User"
+    },
 
-message:String,
+    title:{
+        type:String,
+        required:true
+    },
 
-user:String,
+    message:{
+        type:String,
+        required:true
+    },
 
-read:{
-
-type:Boolean,
-
-default:false
-
-}
+    read:{
+        type:Boolean,
+        default:false
+    }
 
 },{
-timestamps:true
+    timestamps:true
 });
 
 export default mongoose.model(
-
-"Notification",
-
-notificationSchema
-
+    "Notification",
+    notificationSchema
 );
-
+```

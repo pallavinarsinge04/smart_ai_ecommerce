@@ -1,21 +1,21 @@
 
-import { FaBell } from "react-icons/fa";
+import {Link} from "react-router-dom";
 
 function NotificationBell(){
 
 return(
 
-<div className="bell">
+<Link
 
-<FaBell size={24}/>
+to="/notifications"
 
-<span className="count">
+className="notification-bell"
 
-3
+>
 
-</span>
+🔔
 
-</div>
+</Link>
 
 );
 

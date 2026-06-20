@@ -1,22 +1,31 @@
 
-export default function(io){
+import {Server} from "socket.io";
 
-    io.on("connection",(socket)=>{
+export const initializeSocket=(server)=>{
 
-        console.log("User Connected");
+const io=new Server(server,{
 
-        socket.on("send_message",(data)=>{
+cors:{
 
-            io.emit("receive_message",data);
-
-        });
-
-        socket.on("disconnect",()=>{
-
-            console.log("User Disconnected");
-
-        });
-
-    });
+origin:"http://localhost:5173"
 
 }
+
+});
+
+io.on("connection",(socket)=>{
+
+console.log("User Connected");
+
+socket.on("disconnect",()=>{
+
+console.log("User Disconnected");
+
+});
+
+});
+
+return io;
+
+};
+

@@ -1,23 +1,39 @@
 
-import {useEffect,useState} from "react";
+import {
 
-import {getNotifications}
+useEffect,
+
+useState
+
+}
+
+from "react";
+
+import {
+
+getNotifications,
+
+markAsRead
+
+}
 
 from "../services/notificationService";
-
-import NotificationCard
-
-from "../components/NotificationCard";
 
 function Notifications(){
 
 const[data,setData]=useState([]);
 
-useEffect(()=>{
+const load=()=>{
 
 getNotifications()
 
 .then(res=>setData(res.data));
+
+};
+
+useEffect(()=>{
+
+load();
 
 },[]);
 
@@ -33,17 +49,41 @@ Notifications
 
 {
 
-data.map(item=>
+data.map(item=>(
 
-<NotificationCard
+<div
 
 key={item._id}
 
-item={item}
+className="notification-card"
 
-/>
+>
 
-)
+<h3>
+
+{item.title}
+
+</h3>
+
+<p>
+
+{item.message}
+
+</p>
+
+<button
+
+onClick={()=>markAsRead(item._id).then(load)}
+
+>
+
+Mark as Read
+
+</button>
+
+</div>
+
+))
 
 }
 
@@ -54,4 +94,3 @@ item={item}
 }
 
 export default Notifications;
-

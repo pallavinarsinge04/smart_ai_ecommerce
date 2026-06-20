@@ -1,23 +1,19 @@
 
 import http from "http";
-import { Server } from "socket.io";
+
 import app from "./app.js";
-import socketHandler from "./socket/socket.js";
 
-const server = http.createServer(app);
+import {initializeSocket}
 
-const io = new Server(server,{
+from "./socket/socket.js";
 
-    cors:{
-        origin:"http://localhost:5173"
-    }
+const server=http.createServer(app);
 
-});
-
-socketHandler(io);
+initializeSocket(server);
 
 server.listen(5000,()=>{
 
 console.log("Server Running");
 
 });
+
