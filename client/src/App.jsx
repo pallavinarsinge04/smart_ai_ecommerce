@@ -10,7 +10,7 @@ import Products from "./pages/Product";
 // admin
 import Inventory from "./admin/pages/Inventory";
 import Analytics from "./admin/pages/Analytics";
-
+import Cart from "./pages/Cart";
 // seller
 import SellerDashboard from "./../seller/pages/SellerDashboard";
 
@@ -19,6 +19,7 @@ import AIAssistant from "./pages/AIAssistant";
 
 // payment
 import PaymentSuccess from "./pages/PaymentSuccess";
+import Wishlist from "./pages/Wishlist";
 
 function App() {
   return (
@@ -37,7 +38,9 @@ function App() {
 
         <Route path="/ai" element={<AIAssistant />} />
 <Route path="/product" element={<Products />} />
+<Route path="/cart" element={<Cart />} />
         <Route path="/payment-success" element={<PaymentSuccess />} />
+        <Route path="/wishlist" element={<Wishlist />} />
       </Routes>
     </BrowserRouter>
   );

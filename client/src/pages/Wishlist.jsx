@@ -1,45 +1,23 @@
-import { useWishlist } from "../context/WishlistContext";
-import "./Page.css";
-
-export default function Wishlist() {
-  const { wishlist, removeFromWishlist } = useWishlist();
-
+import React from "react";
+import Navbar from "../components/Navbar";
+function Wishlist() {
   return (
-    <div className="page-container">
+    <div style={{ padding: "20px" }}>
+      <Navbar />
+      <h1>Wishlist Page ❤️</h1>
 
-      <h1 className="page-title">❤️ Wishlist</h1>
+      <p>Your saved products will appear here.</p>
 
-      {wishlist.length === 0 ? (
-        <div className="empty-card">
-          <h2>No Products Added</h2>
+      {/* Example static content */}
+      <div style={{ marginTop: "20px" }}>
+        <div style={{ border: "1px solid #ddd", padding: "10px" }}>
+          <h3>Sample Product 1</h3>
+          <p>Price: ₹999</p>
+          <button>Remove</button>
         </div>
-      ) : (
-        <div className="grid">
-
-          {wishlist.map((item) => (
-
-            <div className="item-card" key={item._id}>
-
-              <img src={item.image} alt={item.name} />
-
-              <h2>{item.name}</h2>
-
-              <p>₹{item.price}</p>
-
-              <button
-                className="delete-btn"
-                onClick={() => removeFromWishlist(item._id)}
-              >
-                Remove
-              </button>
-
-            </div>
-
-          ))}
-
-        </div>
-      )}
-
+      </div>
     </div>
   );
 }
+
+export default Wishlist;
