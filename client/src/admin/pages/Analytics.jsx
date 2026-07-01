@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
-import AnalyticsCard from "../../components/AnalyticsCard";
 import { getAnalytics } from "../../services/analyticsService";
 
 const socket = io("http://localhost:5000");

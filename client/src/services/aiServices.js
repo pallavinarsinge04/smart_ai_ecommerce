@@ -1,18 +1,9 @@
-
-import axios from "axios";
-
 export const askAI = async (message) => {
+  const res = await fetch("http://localhost:5000/api/ai", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message }),
+  });
 
-    return axios.post(
-
-        "http://localhost:5000/api/ai/chat",
-
-        {
-
-            message,
-
-        }
-
-    );
-
+  return res.json();
 };

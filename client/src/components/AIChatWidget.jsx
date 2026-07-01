@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 
-import { askAI } from "../services/aiService";
+
 
 function AIChatWidget() {
 
