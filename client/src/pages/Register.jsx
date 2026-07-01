@@ -1,76 +1,53 @@
-
-import React, { useState } from "react";
-import "./Auth.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import "./Register.css";
 
 function Register() {
-  const navigate = useNavigate();
-
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleRegister = (e) => {
     e.preventDefault();
-
-    // Add your API call here
-
-    alert("Registration Successful");
-
-    navigate("/login");
+    console.log(name, email, password);
   };
 
   return (
-    <div className="auth-container">
-      <div className="auth-card">
-
-        <div className="auth-logo">🛍️</div>
-
-        <h1>Create Account</h1>
-
-        <p>Register to Smart AI Ecommerce</p>
+    <div className="register-container">
+      <div className="register-card">
+        <h2>Create Account 🚀</h2>
+        <p>Register to start shopping</p>
 
         <form onSubmit={handleRegister}>
-
           <input
             type="text"
-            placeholder="Full Name"
+            placeholder="Enter Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
 
           <input
             type="email"
-            placeholder="Email Address"
+            placeholder="Enter Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
 
           <input
             type="password"
-            placeholder="Password"
+            placeholder="Enter Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
 
-          <button className="auth-btn" type="submit">
-            Register
-          </button>
-
+          <button type="submit">Register</button>
         </form>
 
-        <div className="auth-footer">
-          Already have an account?
-
-          <Link to="/login">
-            Login
-          </Link>
-        </div>
-
+        <p className="login-link">
+          Already have an account? Login
+        </p>
       </div>
     </div>
   );
 }
 
 export default Register;
-
