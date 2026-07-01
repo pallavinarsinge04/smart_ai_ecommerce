@@ -1,25 +1,77 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../components/Navbar";
+import "./Orders.css";
+
 function Orders() {
+  const [orders] = useState([
+    {
+      id: "1001",
+      product: "Mobile Phone",
+      status: "Delivered",
+      date: "20 June 2026",
+    },
+    {
+      id: "1002",
+      product: "Headphones",
+      status: "Shipping",
+      date: "25 June 2026",
+    },
+    {
+      id: "1003",
+      product: "Smart Watch",
+      status: "Pending",
+      date: "28 June 2026",
+    },
+  ]);
+
+  const getStatusClass = (status) => {
+    if (status === "Delivered") return "delivered";
+    if (status === "Shipping") return "shipping";
+    return "pending";
+  };
+
   return (
-    <div style={{ padding: "20px" }}>
-         <Navbar />
-      <h1>My Orders 📦</h1>
+    <div>
+      <Navbar />
 
-      <p>Here you can see all your placed orders.</p>
+      <div className="orders-container">
 
-      {/* Sample Orders UI */}
-      <div style={{ marginTop: "20px" }}>
-        <div style={{ border: "1px solid #ddd", padding: "10px", marginBottom: "10px" }}>
-          <h3>Order #1001</h3>
-          <p>Product: Mobile Phone</p>
-          <p>Status: Delivered ✅</p>
+        {/* HEADER */}
+        <div className="orders-header">
+          <h1>📦 My Orders</h1>
+          <p>Track your purchase history & delivery status</p>
         </div>
 
-        <div style={{ border: "1px solid #ddd", padding: "10px" }}>
-          <h3>Order #1002</h3>
-          <p>Product: Headphones</p>
-          <p>Status: Shipping 🚚</p>
+        {/* ORDERS LIST */}
+        <div className="orders-grid">
+
+          {orders.length === 0 ? (
+            <div className="empty-orders">
+              <h2>No orders yet 🛒</h2>
+              <p>Start shopping to see your orders here</p>
+            </div>
+          ) : (
+            orders.map((order) => (
+              <div className="order-card" key={order.id}>
+
+                <div className="order-top">
+                  <h3>Order #{order.id}</h3>
+                  <span className={`status ${getStatusClass(order.status)}`}>
+                    {order.status}
+                  </span>
+                </div>
+
+                <p><b>Product:</b> {order.product}</p>
+                <p><b>Date:</b> {order.date}</p>
+
+                <button className="track-btn">
+                  Track Order
+                </button>
+
+              </div>
+            ))
+          )}
+
         </div>
       </div>
     </div>
