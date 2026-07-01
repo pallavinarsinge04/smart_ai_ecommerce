@@ -13,6 +13,7 @@ import Wishlist from "./pages/Wishlist";
 import Inventory from "./admin/pages/Inventory";
 import Analytics from "./admin/pages/Analytics";
 import Cart from "./pages/Cart";
+import Admin from "./pages/Admin";
 // seller
 import SellerDashboard from "./../seller/pages/SellerDashboard";
 
@@ -45,6 +46,7 @@ function App() {
         <Route path="/payment-success" element={<PaymentSuccess />} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/orders" element={<Orders />} />
+        <Route path="/admin/dashboard" element={<Admin />} />
       </Routes>
     </BrowserRouter>
   );
