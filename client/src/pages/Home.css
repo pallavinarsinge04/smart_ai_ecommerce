@@ -1,0 +1,98 @@
+.home-container {
+  font-family: Arial, sans-serif;
+  background: #f9fafb;
+}
+
+/* HERO */
+.hero-section {
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  color: white;
+  padding: 50px;
+  text-align: center;
+  border-radius: 10px;
+  margin: 20px;
+}
+
+.hero-section button {
+  padding: 10px 20px;
+  margin-top: 10px;
+  border: none;
+  background: white;
+  color: #1e3a8a;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+/* SECTION */
+.section {
+  margin: 20px;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+}
+
+/* CATEGORIES */
+.categories {
+  display: flex;
+  gap: 10px;
+}
+
+.cat {
+  padding: 10px;
+  background: #e5e7eb;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* PRODUCTS */
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.product-card {
+  width: 200px;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 10px;
+  background: white;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+}
+
+.product-card img {
+  width: 100%;
+}
+
+/* OFFER */
+.offer-section {
+  margin: 20px;
+  padding: 30px;
+  background: #fef3c7;
+  border-radius: 10px;
+  text-align: center;
+}
+
+/* AI */
+.ai-section {
+  margin: 20px;
+  padding: 30px;
+  background: #e0f2fe;
+  border-radius: 10px;
+  text-align: center;
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 20px;
+  background: #111827;
+  color: white;
+  margin-top: 30px;
+}

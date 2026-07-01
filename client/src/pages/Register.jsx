@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Register.css";
 
 function Register() {
@@ -6,9 +7,18 @@ function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigate = useNavigate(); // ✅ FIX ADDED
+
   const handleRegister = (e) => {
     e.preventDefault();
+
     console.log(name, email, password);
+
+    // fake register success
+    localStorage.setItem("token", "demo-token");
+
+    // redirect to login page
+    navigate("/");
   };
 
   return (
@@ -42,9 +52,14 @@ function Register() {
           <button type="submit">Register</button>
         </form>
 
-        <p className="login-link">
-          Already have an account? Login
-        </p>
+        <div className="extra-links">
+          <p>Forgot Password?</p>
+
+          {/* ✅ CLICK → LOGIN PAGE */}
+          <p style={{ cursor: "pointer", color: "blue" }} onClick={() => navigate("/")}>
+            Already have an account? Login
+          </p>
+        </div>
       </div>
     </div>
   );

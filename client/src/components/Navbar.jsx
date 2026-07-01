@@ -11,7 +11,7 @@ function Navbar() {
 
       <div className="nav-links">
 
-        <Link to="/">Home</Link>
+        <Link to="/home">Home</Link>
 
         <Link to="/product">Products</Link>
 
@@ -25,24 +25,14 @@ function Navbar() {
         <Link to="/orders">Orders</Link>
 
         <Link to="/admin/dashboard">Admin</Link>
-
-      </div>
-
-      <div className="nav-right">
-
-        <Link to="/login">
+        <Link to="/">
           <button className="login-btn">
-            Login
-          </button>
-        </Link>
-
-        <Link to="/register">
-          <button className="register-btn">
-            Register
+            Logout
           </button>
         </Link>
 
       </div>
+
 
     </nav>
   );

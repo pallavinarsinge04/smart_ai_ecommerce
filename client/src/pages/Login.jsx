@@ -1,20 +1,31 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigate = useNavigate();
+
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log(email, password);
+
+    if (email && password) {
+      // fake login success
+      localStorage.setItem("token", "demo-token");
+
+      // redirect to home
+      navigate("/home");
+    }
   };
 
   return (
     <div className="login-container">
+      {/* CARD UI */}
       <div className="login-card">
         <h2>Welcome Back 👋</h2>
-        <p>Please login to continue</p>
+        <p>Login to continue</p>
 
         <form onSubmit={handleLogin}>
           <input
@@ -36,7 +47,9 @@ function Login() {
 
         <div className="extra-links">
           <p>Forgot Password?</p>
-          <p>Don't have an account? Register</p>
+          <p onClick={() => navigate("/register")}>
+            Don't have an account? Register
+          </p>
         </div>
       </div>
     </div>

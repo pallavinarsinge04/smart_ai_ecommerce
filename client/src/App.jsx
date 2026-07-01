@@ -1,52 +1,34 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-// pages
-import Home from "./pages/Home";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-
-import Notifications from "./pages/Notifications";
-import Products from "./pages/Product";
-import Orders from "./pages/Orders";
-import Wishlist from "./pages/Wishlist";
-// admin
-import Inventory from "./admin/pages/Inventory";
-import Analytics from "./admin/pages/Analytics";
+import Home from "./pages/Home";
+import Product from "./pages/Product";
 import Cart from "./pages/Cart";
-import Admin from "./pages/Admin";
-// seller
-import SellerDashboard from "./../seller/pages/SellerDashboard";
-
-// AI
-import AIAssistant from "./pages/AIAssistant";
-
-// payment
-import PaymentSuccess from "./pages/PaymentSuccess";
-
-
-
+import Wishlist from "./pages/Wishlist";
+import Orders from "./pages/Orders";
+import AdminDashboard from "./pages/Admin";
 function App() {
+  const isLoggedIn = localStorage.getItem("token"); // ✅ FIX HERE
+
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
+
+        {/* FIRST PAGE = LOGIN */}
+        <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/orders" element={<Orders />} />
-        <Route path="/notifications" element={<Notifications />} />
 
-        <Route path="/admin/inventory" element={<Inventory />} />
-        <Route path="/admin/analytics" element={<Analytics />} />
-
-        <Route path="/seller/dashboard" element={<SellerDashboard />} />
-
-        <Route path="/ai" element={<AIAssistant />} />
-<Route path="/product" element={<Products />} />
-<Route path="/cart" element={<Cart />} />
-        <Route path="/payment-success" element={<PaymentSuccess />} />
+        {/* PROTECTED HOME PAGE */}
+        <Route path="/home" element={
+            isLoggedIn ? <Home /> : <Navigate to="/home" />
+          }
+        />
+        <Route path="/product" element={<Product />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/orders" element={<Orders />} />
-        <Route path="/admin/dashboard" element={<Admin />} />
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
+
       </Routes>
     </BrowserRouter>
   );
