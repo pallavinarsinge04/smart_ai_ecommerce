@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
+import "./Product.css";
 
 function Products() {
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState("");
+  const [category, setCategory] = useState("All");
+  const [sort, setSort] = useState("");
 
   useEffect(() => {
     setProducts([
@@ -15,84 +18,94 @@ function Products() {
     ]);
   }, []);
 
-  const filtered = products.filter((p) =>
+  // FILTER
+  let filtered = products.filter((p) =>
     p.name.toLowerCase().includes(search.toLowerCase())
   );
 
-  return (
-    <div style={{ fontFamily: "Arial" }}>
+  if (category !== "All") {
+    filtered = filtered.filter((p) => p.category === category);
+  }
 
-      {/* NAVBAR */}
+  // SORT
+  if (sort === "low") {
+    filtered.sort((a, b) => a.price - b.price);
+  } else if (sort === "high") {
+    filtered.sort((a, b) => b.price - a.price);
+  }
+
+  return (
+    <div>
       <Navbar />
 
-      {/* PAGE WRAPPER */}
-      <div style={{ padding: "20px" }}>
+      <div className="product-container">
 
-        {/* HEADER SECTION */}
-        <div style={{
-          background: "#1E3A8A",
-          color: "white",
-          padding: "20px",
-          borderRadius: "10px"
-        }}>
-          <h1>🛍️ Product Page</h1>
-          <p>All products are listed below</p>
+        {/* HEADER */}
+        <div className="product-header">
+          <h1>🛍️ Explore Products</h1>
+          <p>Find the best deals curated for you</p>
         </div>
 
-        {/* SEARCH BAR */}
-        <div style={{ marginTop: "20px" }}>
+        {/* FILTER SECTION */}
+        <div className="filter-section">
+
+          {/* SEARCH */}
           <input
             type="text"
             placeholder="Search products..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            style={{
-              padding: "10px",
-              width: "300px",
-              borderRadius: "5px",
-              border: "1px solid #ccc"
-            }}
+            className="search-box"
           />
+
+          {/* CATEGORY */}
+          <select
+            onChange={(e) => setCategory(e.target.value)}
+            className="filter-box"
+          >
+            <option value="All">All</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Accessories">Accessories</option>
+          </select>
+
+          {/* SORT */}
+          <select
+            onChange={(e) => setSort(e.target.value)}
+            className="filter-box"
+          >
+            <option value="">Sort By</option>
+            <option value="low">Price: Low to High</option>
+            <option value="high">Price: High to Low</option>
+          </select>
+
         </div>
 
         {/* PRODUCT GRID */}
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-          gap: "20px",
-          marginTop: "20px"
-        }}>
+        <div className="product-grid">
 
           {filtered.length > 0 ? (
             filtered.map((product) => (
-              <div key={product.id}
-                style={{
-                  border: "1px solid #ddd",
-                  borderRadius: "10px",
-                  padding: "15px",
-                  boxShadow: "0 2px 6px rgba(0,0,0,0.1)",
-                  background: "white"
-                }}
-              >
-                <h3>{product.name}</h3>
-                <p>Category: {product.category}</p>
-                <p style={{ fontWeight: "bold" }}>₹ {product.price}</p>
+              <div className="product-card" key={product.id}>
 
-                <button style={{
-                  marginTop: "10px",
-                  padding: "8px 12px",
-                  background: "#1E3A8A",
-                  color: "white",
-                  border: "none",
-                  cursor: "pointer",
-                  borderRadius: "5px"
-                }}>
+                <div className="product-image">
+                  🛒
+                </div>
+
+                <h3>{product.name}</h3>
+                <p className="category">{product.category}</p>
+                <p className="price">₹ {product.price}</p>
+
+                <button className="add-btn">
                   Add to Cart
                 </button>
+
               </div>
             ))
           ) : (
-            <p>No products found 😢</p>
+            <div className="empty-state">
+              <h3>No products found 😢</h3>
+              <p>Try different keywords or filters</p>
+            </div>
           )}
 
         </div>
