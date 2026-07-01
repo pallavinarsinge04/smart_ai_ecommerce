@@ -6,7 +6,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Orders from "./pages/Orders";
 import Notifications from "./pages/Notifications";
-
+import Products from "./pages/Product";
 // admin
 import Inventory from "./admin/pages/Inventory";
 import Analytics from "./admin/pages/Analytics";
@@ -36,7 +36,7 @@ function App() {
         <Route path="/seller/dashboard" element={<SellerDashboard />} />
 
         <Route path="/ai" element={<AIAssistant />} />
-
+<Route path="/product" element={<Products />} />
         <Route path="/payment-success" element={<PaymentSuccess />} />
       </Routes>
     </BrowserRouter>
