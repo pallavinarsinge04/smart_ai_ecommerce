@@ -1,40 +1,57 @@
 import React from "react";
 import Navbar from "../components/Navbar";
+import "./Admin.css";
+
 function Admin() {
+  const stats = [
+    { title: "Total Users", value: 120 },
+    { title: "Total Products", value: 45 },
+    { title: "Total Orders", value: 78 },
+    { title: "Revenue", value: "₹45,000" },
+  ];
+
+  const actions = [
+    { label: "➕ Add Product", color: "blue" },
+    { label: "🗑️ Delete Product", color: "red" },
+    { label: "📦 Manage Orders", color: "green" },
+    { label: "👤 Manage Users", color: "purple" },
+  ];
+
   return (
-    <div style={{ padding: "20px" }}>
-        <Navbar />
-      <h1>Admin Dashboard 🛠️</h1>
+    <div>
+      <Navbar />
 
-      <p>Manage your e-commerce website here.</p>
+      <div className="admin-container">
 
-      {/* Dashboard Cards */}
-      <div style={{ display: "flex", gap: "15px", marginTop: "20px" }}>
-        
-        <div style={{ border: "1px solid #ddd", padding: "15px", width: "200px" }}>
-          <h3>Total Users</h3>
-          <p>120</p>
+        {/* HEADER */}
+        <div className="admin-header">
+          <h1>🛠️ Admin Dashboard</h1>
+          <p>Manage your Smart AI E-Commerce platform</p>
         </div>
 
-        <div style={{ border: "1px solid #ddd", padding: "15px", width: "200px" }}>
-          <h3>Total Products</h3>
-          <p>45</p>
+        {/* STATS CARDS */}
+        <div className="stats-grid">
+          {stats.map((item, index) => (
+            <div className="stat-card" key={index}>
+              <h3>{item.title}</h3>
+              <p>{item.value}</p>
+            </div>
+          ))}
         </div>
 
-        <div style={{ border: "1px solid #ddd", padding: "15px", width: "200px" }}>
-          <h3>Total Orders</h3>
-          <p>78</p>
+        {/* QUICK ACTIONS */}
+        <div className="actions-section">
+          <h2>⚡ Quick Actions</h2>
+
+          <div className="actions-grid">
+            {actions.map((action, index) => (
+              <button key={index} className={`action-btn ${action.color}`}>
+                {action.label}
+              </button>
+            ))}
+          </div>
         </div>
 
-      </div>
-
-      {/* Admin Actions */}
-      <div style={{ marginTop: "30px" }}>
-        <h2>Quick Actions</h2>
-
-        <button style={{ marginRight: "10px" }}>➕ Add Product</button>
-        <button style={{ marginRight: "10px" }}>🗑️ Delete Product</button>
-        <button>📦 Manage Orders</button>
       </div>
     </div>
   );

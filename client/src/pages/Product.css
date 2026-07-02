@@ -1,6 +1,6 @@
 .product-container {
   padding: 20px;
-  background: #f9fafb;
+  background:0 3px 10px rgba(0,0,0,0.1);
   min-height: 100vh;
 }
 
