@@ -3,27 +3,38 @@ import Navbar from "../components/Navbar";
 import "./Orders.css";
 
 function Orders() {
-  const [orders] = useState([
-    {
-      id: "1001",
-      product: "Mobile Phone",
-      status: "Delivered",
-      date: "20 June 2026",
-    },
-    {
-      id: "1002",
-      product: "Headphones",
-      status: "Shipping",
-      date: "25 June 2026",
-    },
-    {
-      id: "1003",
-      product: "Smart Watch",
-      status: "Pending",
-      date: "28 June 2026",
-    },
-  ]);
-
+ const [orders] = useState([
+  {
+    id: "1001",
+    product: "Samsung Galaxy S25",
+    price: 65999,
+    status: "Delivered",
+    payment: "Paid",
+    address: "Pune, Maharashtra",
+    date: "20 June 2026",
+    image: "📱",
+  },
+  {
+    id: "1002",
+    product: "Sony Headphones",
+    price: 5999,
+    status: "Shipping",
+    payment: "Paid",
+    address: "Mumbai, Maharashtra",
+    date: "25 June 2026",
+    image: "🎧",
+  },
+  {
+    id: "1003",
+    product: "Apple Watch",
+    price: 29999,
+    status: "Pending",
+    payment: "Cash on Delivery",
+    address: "Nagpur, Maharashtra",
+    date: "28 June 2026",
+    image: "⌚",
+  },
+]);
   const getStatusClass = (status) => {
     if (status === "Delivered") return "delivered";
     if (status === "Shipping") return "shipping";
@@ -52,23 +63,59 @@ function Orders() {
             </div>
           ) : (
             orders.map((order) => (
-              <div className="order-card" key={order.id}>
+             <div className="order-card" key={order.id}>
 
-                <div className="order-top">
-                  <h3>Order #{order.id}</h3>
-                  <span className={`status ${getStatusClass(order.status)}`}>
-                    {order.status}
-                  </span>
-                </div>
+<div className="order-image">
+{order.image}
+</div>
 
-                <p><b>Product:</b> {order.product}</p>
-                <p><b>Date:</b> {order.date}</p>
+<div className="order-content">
 
-                <button className="track-btn">
-                  Track Order
-                </button>
+<div className="order-top">
 
-              </div>
+<h3>Order #{order.id}</h3>
+
+<span className={`status ${getStatusClass(order.status)}`}>
+{order.status}
+</span>
+
+</div>
+
+<h2>{order.product}</h2>
+
+<p><strong>Price:</strong> ₹{order.price}</p>
+
+<p><strong>Payment:</strong> {order.payment}</p>
+
+<p><strong>Delivery:</strong> {order.date}</p>
+
+<p><strong>Address:</strong> {order.address}</p>
+
+<div className="progress">
+
+<div className={`progress-bar ${getStatusClass(order.status)}`}></div>
+
+</div>
+
+<div className="btn-group">
+
+<button className="track-btn">
+Track Order
+</button>
+
+<button className="invoice-btn">
+Invoice
+</button>
+
+<button className="review-btn">
+Review
+</button>
+
+</div>
+
+</div>
+
+</div>
             ))
           )}
 
